@@ -1,0 +1,23 @@
+<% @users.each do |user| %>
+                    <tr>
+                       
+                      
+            <td><%= user.email %></td>
+                  <td>
+                <% if !user.channels_user.find_by(channel_id: params[:channel_id]).nil? %>
+                            <% if user.channels_user.find_by(channel_id: params[:channel_id]).role == 'member' %>
+
+                                <%= link_to "Uninvite", channel_channels_user_path(params[:channel_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+                            <% end %>
+                            <% if user.channels_user.find_by(channel_id: params[:channel_id]).role.empty? %>
+                                <%= link_to "Invite", channel_channels_user_path(params[:channel_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+                            <% end %>
+                        <% end %>
+
+                        <% if user.channels_user.find_by(channel_id: params[:channel_id]).nil? %>
+                            <%= link_to "Invite", channel_channels_user_path(params[:channel_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+                        <% end %>
+                           
+                        </td>
+                          </tr>
+                <% end %>

@@ -1,0 +1,47 @@
+<%= render 'layouts/admin_bar' %>
+<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <title>Chap Application</title>
+<div class="wrapper hold-transition skin-blue layout-top-nav">
+  <body class="hold-transition register-page">
+
+  <div class="register-box-body col-sm-6 col-soffset-3" style="margin-top: 100px">
+ 
+   <div class="container">
+    <div class="row">
+      <div class="col-sm-9 offset-sm-7 ">
+      <div class="card">
+        <div class="card card-header text-center">
+          Create New Workspace
+      </div>
+      <div class="card card-body">
+       <%= form_for  @workspace, url: {action: "create"} do |f| %> 
+        <div class="form-group ">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+     
+
+        <div class="form-group">
+        <%= f.submit "Save", class: "btn btn-primary btn-flat" %><%= link_to "Choose Your Workspace", root_path, class: 'btn btn-success' %>
+      </div>
+    <% end %>   
+  </div>
+
+</div>
+</div>
+
+
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' 
+    });
+  });
+</script>
+</body>
+</div>
+</html>
+
