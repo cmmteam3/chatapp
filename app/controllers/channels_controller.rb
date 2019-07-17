@@ -54,12 +54,12 @@ class ChannelsController < ApplicationController
   end
 
   def show
-
-
      @channel= Channel.find(params[:id])
      #@mess=Message.find(params[:id])
      @message=Message.new
      @thread=ThreadReply.new
+     @threadList=ThreadReply.all
+
      # @thread_list=ThreadReply.where(:message_id=> @mess)
      @messages=Message.all.includes(:user).where(channel_id: @channel)
      @currentWorkspace=Workspace.find_by_id(session[:current_workspace])

@@ -100,11 +100,19 @@ body {
         <%= f.hidden_field :message_id, value: message.id ,name:"message_id" %>
       
      <a data-toggle="collapse" href="#" data-target="#collapse-<%= message.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
-     Reply
+     Reply 
       </a>
+
      
       <a data-toggle="collapse" href="#" data-target="#collapse-aa" role="button" aria-expanded="false" aria-controls="collapseExample">
  
+
+       |
+      <a data-toggle="collapse" href="#" data-target="#collapse-<%= message.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
+     View
+    </a>
+
+
       </a>
        </div>
        <div class="collapse" id="collapse-<%= message.id %>"> 
@@ -142,7 +150,13 @@ body {
   <% end %>
 
   </div>
+<<<<<<< HEAD
    </div>
  <%= will_paginate @messages %>
+=======
+  <%= will_paginate @messages %>
+   </div>
+ 
+>>>>>>> f9d9b9878e743b3aa5cb619e885db9be7fc203dc
 </body>
 </html> 
