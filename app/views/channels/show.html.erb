@@ -37,6 +37,8 @@ body {
 </style>
 </head>
 <body>
+
+    
 <%= render 'channels/navbar' %>
 
 <div class="sidenav">
@@ -83,11 +85,7 @@ body {
 </div>
 </div>
 
-
-
-
     <div style="margin-left: 300px;">
-             
      <% if @messages %>
       <% @messages.each do |message| %>
        <%=  message.user.email %><%= message.created_at %>
@@ -102,10 +100,14 @@ body {
         <%= f.hidden_field :message_id, value: message.id ,name:"message_id" %>
       
      <a data-toggle="collapse" href="#" data-target="#collapse-<%= message.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
-     Reply
+     Reply 
       </a>
-      <a data-toggle="collapse" href="#" data-target="#collapse-aa" role="button" aria-expanded="false" aria-controls="collapseExample">
- 
+       |
+      <a data-toggle="collapse" href="#" data-target="#collapse-<%= message.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
+     View
+    </a>
+
+      <a data-toggle="collapse" href="#" data-target="#collapse-<%= message.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
       </a>
        </div>
        <div class="collapse" id="collapse-<%= message.id %>"> 
@@ -130,9 +132,7 @@ body {
 
  <%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create') do |f| %>
   <%= f.hidden_field :channel_id, value: @channel.id ,name:"channel_id" %>
-  <div class="text-container">
-    
-      
+  <div class="text-container">  
     
     <div class="form-group">
     <%= f.text_area :name, name:'name', class: 'form-control' %>
@@ -143,10 +143,10 @@ body {
      <%= f.submit "Send", class: 'btn btn-primary btn-sm' %>
   </div>
   <% end %>
-  </div>
 
+  </div>
+  <%= will_paginate @messages %>
+   </div>
+ 
 </body>
 </html> 
-
-
- 

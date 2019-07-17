@@ -3,10 +3,10 @@ class ChannelsController < ApplicationController
   
   def new
 
-        @channel= Channel.new
+         @channel= Channel.new
          @workspace= Workspace.find(params[:id])
          @channels=Channel.where(:workspace_id => @workspace.id)
-        @message = Message.new
+         @message = Message.new
         # @recipient = User.find(params[:user_id])
   end
  def index
@@ -28,9 +28,9 @@ class ChannelsController < ApplicationController
 
        @channel.save
        @user_channel =ChannelsUser.new(:user => current_user, :channel => @channel, :role => "owner")
-            @user_channel.save
-            @workspace= Workspace.find(params[:workspace_id])
-            session[:channels_list]=@channel.id
+       @user_channel.save
+       @workspace= Workspace.find(params[:workspace_id])
+       session[:channels_list]=@channel.id
 
             redirect_to workspace_path(@workspace)
   end
@@ -54,23 +54,22 @@ class ChannelsController < ApplicationController
   end
 
   def show
-
-
      @channel= Channel.find(params[:id])
      #@mess=Message.find(params[:id])
      @message=Message.new
      @thread=ThreadReply.new
-    # @thread_list=ThreadReply.where(:message_id=> @mess)
+     @threadList=ThreadReply.all
+     # @thread_list=ThreadReply.where(:message_id=> @mess)
      @messages=Message.all.includes(:user).where(channel_id: @channel)
      @currentWorkspace=Workspace.find_by_id(session[:current_workspace])
      @channels=Channel.where(:workspace_id => @currentWorkspace.id)
-  
+     @messages = Message.paginate(:page => params[:page], :per_page => 4)
   end
 
   def destroy
      Channel.find(params[:id]).destroy
-      @workspace=Workspace.find(session[:current_workspace])
-       redirect_to workspace_path(@workspace)
+     @workspace=Workspace.find(session[:current_workspace])
+     redirect_to workspace_path(@workspace)
      
   end
 
