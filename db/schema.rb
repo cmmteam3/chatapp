@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_07_16_020404) do
 
-  create_table "channels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "channels", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.boolean "privacy"
     t.bigint "workspace_id"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_07_16_020404) do
     t.index ["workspace_id"], name: "index_channels_on_workspace_id"
   end
 
-  create_table "channels_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "channels_users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "role"
     t.bigint "user_id"
     t.bigint "channel_id"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_07_16_020404) do
     t.index ["user_id"], name: "index_channels_users_on_user_id"
   end
 
-  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id"
     t.bigint "channel_id"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_07_16_020404) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "thread_replies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "thread_replies", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "text"
     t.bigint "message_id"
     t.datetime "created_at", null: false
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_07_16_020404) do
     t.index ["message_id"], name: "index_thread_replies_on_message_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2019_07_16_020404) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "users_workspaces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users_workspaces", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "workspace_id"
     t.datetime "created_at", null: false
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2019_07_16_020404) do
     t.index ["workspace_id"], name: "index_users_workspaces_on_workspace_id"
   end
 
-  create_table "workspaces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "workspaces", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
