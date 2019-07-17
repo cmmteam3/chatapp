@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
 	    flash[:success] = "Message create is scuccess."
 	    @channel= Channel.find(params[:channel_id])
         redirect_to channel_path(@channel)
+        
 	end
 	def destroy
 		Message.find(params[:id]).destroy
