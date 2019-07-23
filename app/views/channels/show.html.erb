@@ -86,6 +86,7 @@ body {
 </div>
 
     <div style="margin-left: 300px;">
+    <div id="message">
      <% if @messages %>
       <% @messages.each do |message| %>
        <%=  message.user.email %><%= message.created_at %>
@@ -131,11 +132,11 @@ body {
      <% else %>
      <div class="alert alert-primary" role="alert"> Lets Chat!"</div>
      <% end %>
+
     </div>
      
   <div class="textMessage">
-
- <%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create') do |f| %>
+<%= form_with(model: @message, :url => url_for(:controller => 'messages', :action => 'create')) do |f|%>
   <%= f.hidden_field :channel_id, value: @channel.id ,name:"channel_id" %>
   <div class="text-container">  
     
@@ -150,13 +151,6 @@ body {
   <% end %>
 
   </div>
-<<<<<<< HEAD
-   </div>
- <%= will_paginate @messages %>
-=======
-  <%= will_paginate @messages %>
-   </div>
- 
->>>>>>> f9d9b9878e743b3aa5cb619e885db9be7fc203dc
+
 </body>
 </html> 

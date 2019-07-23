@@ -1,33 +1,29 @@
 Rails.application.routes.draw do
   
-  get 'thread_replies/index'
+
+  get 'users_workspace/index'
+  get 'users_workspace/update'
+  root 'signup#index'
+  get    '/login',   to: 'session#new'
+  post   '/login',   to: 'session#create'
+  get 'logout', to: 'session#destroy'
+  resources :signup
+  get 'thread_replies/new'
   get 'thread_replies/show'
-   devise_for :users
-   root 'workspaces#index'
+
+
    resources :channels do
    	resources :channels_user
    end
-  # get 'search/search'
-  # get 'workspaces/index'
-  # get 'workspaces/show'
-  # get 'workspaces/new'
-
-  # get 'workspaces/edit'
-
-
-
-
-
-
-
-
-
-# root 'workspaces#index'
-
+resources :generals
 resources :thread_replies
 resources :messages
-resources :workspaces
 
+resources :workspaces do 
+  resources :users_workspace
+
+end
+end
 
 
 
@@ -53,4 +49,4 @@ resources :workspaces
 
 # get '/edit', to:'dashboard#edit'
 
-end
+

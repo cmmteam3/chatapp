@@ -49,18 +49,17 @@ class ChannelsController < ApplicationController
   def update
       @channel = Channel.find(params[:id])
       @channel.update(channel_params)
+     
       @workspace=Workspace.find(session[:current_workspace])
        redirect_to workspace_path(@workspace)
   end
 
   def show
      @channel= Channel.find(params[:id])
-     #@mess=Message.find(params[:id])
+
      @message=Message.new
      @thread=ThreadReply.new
      @threadList=ThreadReply.all
-
-     # @thread_list=ThreadReply.where(:message_id=> @mess)
      @messages=Message.all.includes(:user).where(channel_id: @channel)
      @currentWorkspace=Workspace.find_by_id(session[:current_workspace])
      @channels=Channel.where(:workspace_id => @currentWorkspace.id)

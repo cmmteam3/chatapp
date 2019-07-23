@@ -3,9 +3,9 @@
 one:
   role: MyString
   user: one
-  channel: one
+  workspace: one
 
 two:
   role: MyString
   user: two
-  channel: two
+  workspace: two

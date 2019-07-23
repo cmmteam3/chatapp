@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<%= render 'layouts/navbar' %>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 offset-sm-3">
+				<div class="car">
+					<div class="card card-header">
+						<h4 class="text-center">Login</h2>
+					</div>
+					<div class="card card-body">
+					  <%= form_for(:session,  url: login_path) do |f| %>
+					  <div class="form">
+					  	  <%= f.label :email %>
+                          <%= f.text_field :email, class: 'form-control' %>
+					  </div>
+					  <div class="form-group">
+					  	  <%= f.label :password %>
+                          <%= f.password_field :password, class: 'form-control' %>
+					  </div>
+					   <div class="form-group">
+                           	    <%= f.submit "Login", class: "btn btn-primary btn-flat btn-block" %>
+                           </div>
+					  <% end %>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,10 +1,20 @@
 class MessagesController < ApplicationController
 	def create
 		@message=Message.new(name:params[:name],channel_id:params[:channel_id],user_id:current_user.id)
-		@message.save
-	    flash[:success] = "Message create is scuccess."
-	    @channel= Channel.find(params[:channel_id])
-        redirect_to channel_path(@channel)
+	  respond_to do |format|
+      if @message.save
+      format.html { redirect_to @message, notice: 'Message was successfully created.' }
+      format.js
+      format.json { render json: @message, status: :created, location: @message }
+    else
+      format.html { render action: "new" }
+      format.json { render json: @message.errors, status: :unprocessable_entity }
+    end
+  end
+		# @message.save
+	 #    flash[:success] = "Message create is scuccess."
+	 #    @channel= Channel.find(params[:channel_id])
+  #       redirect_to channel_path(@channel)
         
 	end
 	def destroy
@@ -26,5 +36,15 @@ class MessagesController < ApplicationController
             @channel=Channel.find(   session[:channels_list])
            redirect_to channel_path(@channel)
 	end
+	def general
+	@aa=Message.new(messageGeneral)
+	@aa.save
+	# @generalMessage.save
+	# redirect_to root_url
+	end
+ private 
+ def messageGeneral
+  params.require(:general).permit(:name,:channel_id,user_id:current_user.id)
+ end
 
 end

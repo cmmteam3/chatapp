@@ -33,19 +33,32 @@ body {
 </style>
 </head>
 <body>
-<%= render 'layouts/admin_bar' %>
+<%= render 'layouts/navbar' %>
 <div class="sidenav">
   <ul class="list-group">
+
   <li class="list-group-item">
   <div class="dropdown">
   <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:red">
-    <%=@workspace.name %>
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  	<%= @workspace.name %>
+  	</button>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+   <%  @usersworkspace.each do |usersworkspace| %>
+   <% if @workspace.id== usersworkspace.workspace_id && current_user.id == usersworkspace.user_id && usersworkspace.role== "member" %>
+
+         <% elsif @workspace.id== usersworkspace.workspace_id && current_user.id == usersworkspace.user_id && usersworkspace.role== "owner" %>
+         
+       
    <p style="margin-left: 29px"><%= link_to 'Edit', edit_workspace_path(@workspace), method: 'get'%></p>
     <p style="margin-left: 29px"> <a class="dropdown-item" href="#"><%= link_to 'Remove', workspace_path(@workspace), method: 'delete', data: { confirm: 'Are you sure?' } %></a></p>
-    <a class="dropdown-item" href="#">Switch to other Workspace</a>
+    <a class="dropdown-item" href="#"></a>
   </div>
+           <% else %>
+   <% end %>
+   <% end %>
+ 
+   
 </div></li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
 Add New Channel
@@ -60,17 +73,37 @@ Add New Channel
 
   <% @channels.each do |channel| %>
     <li class="list-group-item">#<%= link_to channel.name, channel_path(channel)  %></li>
+     
+
+  
   <% end %>
 
 <% else %>
 
 <% end %>
+     
+ 
+
+<li class="list-group-item"> <%= link_to 'Invite member', workspace_users_workspace_index_path(@workspace) %></li>
 </li>
+
+     <% @usersworkspace.each do|usersworkspace| %>
+   <% if usersworkspace.workspace_id == @workspace.id && usersworkspace.role=='member' %>
+ <li class="list-group-item" ><%= usersworkspace.user.email %></li>
+   <% else %> 
+      <% end %>
+  <% end %>
 </ul>
-
 </div>
-
 <div class="main">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10" style="margin-top: 400px;">
+        <div class="text-container">  
+     
+
+		</div>
+	</div>
 </div>
   
 </body>
