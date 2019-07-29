@@ -1,0 +1,122 @@
+ja:
+  Create Workspace Successfully: "ワークスペースを作成する"
+  Create Workspaace fail: "ワークスペース作成の失敗"
+  Update successful: "更新に成功"
+  Update fail: "更新失敗"
+  Wokspace destroy successful: "ワークスペース破壊成功"
+  User SignUp Successful: "ユーザーサインアップ成功"
+  Signup Not Successfull: "申し込みが成功しなかった"
+  Email address missing: "メールアドレスがありません"
+  Password missing: "パスワードがありません"
+  Email address and password missing: "メールアドレスとパスワードがありません"
+  Incorrect email/password combo: "誤ったEメールとパスワードのコンボ"
+  Channel Successfully create: "チャンネル作成成功"
+  Channel create fail: "チャンネル作成失敗"
+  Channel edit successful: "チャンネル編集成功"
+  Channel edit fail: "チャンネル編集失敗"
+  Message destroy successful: "メッセージ破棄成功"
+  Thread destroy successful: "スレッド破棄成功"
+  Thread update successful: "スレッド更新成功"
+  Unknown user: "不明なユーザー"
+
+  email: "メール"
+  password: "パスワード"
+  User SignUp Successfully: "ユーザーサインアップ成功"
+  signup: "登録する"
+  signup:
+    new:
+      Save: "保存する"
+      signup: "登録する"
+      UserName: "ユーザー名"
+      Email: "メールアドレス"
+      Password: "パスワード"
+      password_confirmation: "パスワード確認"
+    _form:
+      Rails chat Application: "レールチャットアプリケーション"
+  session:
+    new:
+      Login: "ログイン"
+  kaminari:
+    _first_page:
+      first: "最初"
+    _last_page:
+      last: "最終"
+    _next_page:
+      next: "次"
+    _prev_page:
+      previous: "前"
+  workspaces:
+    index:
+      Create workspace: "ワークスペースを作成する"
+    show:
+      Invite: "招待する"
+    new:
+      Create New Workspace: "新しいワークスペースを作成する"
+      Save: "保存する"
+      WorkSpaceName: "ワークスペース名"
+    _form:
+      Edit: "編集する"
+      Remove: "削除する"
+      Add New Channel: "新しいチャンネルを追加"
+      Invite member: "メンバーを招待する"
+    edit:
+      Edit Workspace Name: "ワークスペース名を編集"
+      Edit Workspace: "ワークスペースを編集"
+  users_workspace: 
+    index:
+      Name : "名"
+      Email: "メール"
+      Invite User: "ユーザーを招待"
+  channels_user:
+    index:
+      Name : "名"
+      Email: "メール"
+      Invite User: "ユーザーを招待"
+    
+  channels:
+    new:
+      Add New Channel: "新しいチャンネルを追加"
+      Save: "保存する"
+      Enter Channel Name: "チャンネル名を入力"
+    edit:
+      Edit Channel: "チャンネルを編集"
+      Edit Channel Name: "チャンネル名を編集"
+    show:
+      Send: "送る"
+    _navbar:
+      Setting: "設定"
+      Edit: "編集する"
+      Remove: "削除する"
+      Invite: "誘う"
+      Rails chat Application: "レールチャットアプリケーション"
+  layouts:
+    _navbar:
+      Logout: "ログアウト"
+      Sign In: "サインイン"
+      Sign Up: "登録する"
+      Japan: "日本"
+      English: "英語"
+      Rails chat tutorial: "レールチャットチュートリアル"
+    _sidebar:
+      Invite: "招待する"
+      Rails chat Application: "レールチャットアプリケーション"
+  activerecord:
+    models:
+      user: "ユーザー"
+      workspace: "ワークスペース"
+      channel: "チャネル"
+    attributes:
+      user:
+        name: "名"
+        email: "メール"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+      workspace:
+        name: "名"
+      channel:
+        name: "名"
+        Public: "パブリック"
+
+      
+
+

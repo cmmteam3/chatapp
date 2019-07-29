@@ -12,23 +12,27 @@
       <div class="col-sm-9 offset-sm-7 ">
       <div class="card">
         <div class="card card-header text-center">
-          Create New Workspace
+         <%= t('workspaces.new.Create New Workspace') %>
       </div>
       <div class="card card-body">
-       <%= form_for  @workspace, url: {action: "create"} do |f| %>
-
-        <div class="form-group ">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: 'form-control' %>
+     <%= form_for @workspace, url: {action: "create"} do |f| %>
+                   <%= f.label :name %>
+                    <%= form_group_for f, :name, label: false  do %>
+                     <div class="Input-group">
+                     <%= f.text_field :name, class: 'form-control', placeholder: t('workspaces.new.WorkSpaceName') %>
+                      </div>
+                    <% end %>   
+                     <div class="form-group">
+                     <%= f.submit t('workspaces.new.Save'), class: "btn btn-primary btn-flat btn-block" %>
+                    </div>
+          <% end %>
+          </div>
+        </div>
       </div>
-     <div class="form-group">
-     <%= f.submit "Save", class: "btn btn-primary btn-flat btn-block" %>
-     </div>
-    <% end %>   
-  </div>
-
-</div>
-</div>
+    </div>
+  </div></div></div>
+</body>
+</html>
 
 
 <script>

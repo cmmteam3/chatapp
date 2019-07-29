@@ -1,0 +1,28 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <%= render 'layouts/navbar' %>
+
+    <div class="sidenav">
+   
+         <%= render 'layouts/sidebar' %>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+       
+         <% @starMessage.each do |star| %>
+          <%= star.user.name %>  | <%= star.created_at %>
+        <div class="alert alert-primary" role="alert">
+          <%= star.name %>
+           </div>
+         <% end %>
+       </div>
+
+    </div>
+</div>
+</div>
+  </body>
+  </html> 

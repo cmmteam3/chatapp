@@ -1,15 +1,19 @@
-class ChannelsUserController < ApplicationController
-	def index
-       @users = User.where.not(id: current_user)
-	end
-	def update
+    class ChannelsUserController < ApplicationController
+    	def index
+           @usersworkspace=UsersWorkspace.all
+           @workspace=Workspace.find_by_id(session[:current_workspace])
+           @channels=Channel.where(:workspace_id => @workspace.id)
+           @usersworkspace=UsersWorkspace.all
+           @channelsuser=User.all.find_by(id: current_user).channels_user
+    end
+    def update
         
-        @invite_user = User.find(params[:id])
+       @invite_user = UsersWorkspace.find(params[:id])
         @invite_channel = Channel.find(params[:channel_id])
         @is_invite =ChannelsUser.find_by(user: @invite_user, channel: @invite_channel, role: "member")
         @is_uninvite = ChannelsUser.find_by(user: @invite_user, channel: @invite_channel, role: "")
         if @is_invite.nil? && @is_uninvite.nil?
-            @curr_invite = ChannelsUser.new(:user => @invite_user, :channel => @invite_channel, :role => "member")
+            @curr_invite = ChannelsUser.new(user_id: @invite_user.id,channel_id: @invite_channel.id, :role => "member")
             if @curr_invite.save
                 redirect_to :action => 'index'
             end
@@ -25,4 +29,4 @@ class ChannelsUserController < ApplicationController
             redirect_to :action => 'index'
         end
     end
-end
+    end

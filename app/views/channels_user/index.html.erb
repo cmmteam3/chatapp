@@ -1,23 +1,53 @@
-<% @users.each do |user| %>
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <%= render 'layouts/navbar' %>
+
+    <div class="sidenav">
+   
+         <%= render 'layouts/sidebar' %>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+           <table class="table table-dark">
+  <thead>
+    <tr>
+      
+      <th scope="col"><%= t("channels_user.index.Name") %></th>
+      <th scope="col"><%= t("channels_user.index.Email") %></th>
+      <th scope="col"><%= t("channels_user.index.Invite User") %></th>
+    </tr>
+  </thead>
+  <tbody>
+   
+   <% @usersworkspace.each do |usersworkspace| %>
                     <tr>
-                       
-                      
-            <td><%= user.email %></td>
+                     <% if usersworkspace.role=='member'  %> 
+                          <td><%= usersworkspace.user.name %></td>
+            <td><%= usersworkspace.user.email %></td>
+          
                   <td>
-                <% if !user.channels_user.find_by(channel_id: params[:channel_id]).nil? %>
-                            <% if user.channels_user.find_by(channel_id: params[:channel_id]).role == 'member' %>
+                       
+                       <%= link_to "Invite", channel_channels_user_path(params[:channel_id],:id=>usersworkspace.user_id), method: :put, class: "btn btn-primary btn-sm", id: usersworkspace.user_id %>
+                   
+                        <%= link_to "Uninvite", channel_channels_user_path(params[:channel_id],usersworkspace.user_id), method: :put, class: "btn btn-primary btn-sm", id: usersworkspace.user_id %>
 
-                                <%= link_to "Uninvite", channel_channels_user_path(params[:channel_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
-                            <% end %>
-                            <% if user.channels_user.find_by(channel_id: params[:channel_id]).role.empty? %>
-                                <%= link_to "Invite", channel_channels_user_path(params[:channel_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
-                            <% end %>
-                        <% end %>
 
-                        <% if user.channels_user.find_by(channel_id: params[:channel_id]).nil? %>
-                            <%= link_to "Invite", channel_channels_user_path(params[:channel_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+                       </td>
+</tr>
+
+
+                        <% else %>
                         <% end %>
-                           
-                        </td>
-                          </tr>
+                       
                 <% end %>
+  </tbody>
+</table>
+    </div>
+</div>
+</div>
+  </body>
+  </html> 

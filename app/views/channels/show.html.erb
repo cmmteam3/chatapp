@@ -33,6 +33,15 @@ body {
   .sidenav a {font-size: 18px;}
 }
 
+.stars{
+        font-size:24px;color:grey;
+    }
+    .stars:hover {
+        color:yellow;
+    }
+
+   
+
 }
 </style>
 </head>
@@ -42,39 +51,11 @@ body {
 <%= render 'channels/navbar' %>
 
 <div class="sidenav">
-  <ul class="list-group">
-  <li class="list-group-item">
-  <div class="dropdown">
-  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:red">
-     <%=@currentWorkspace.name %>
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-   <p style="margin-left: 29px"><%= link_to 'Edit', edit_workspace_path(@currentWorkspace), method: 'get'%></p>
-    <p style="margin-left: 29px"> <a class="dropdown-item" href="#"><%= link_to 'Remove', workspace_path(@currentWorkspace), method: 'delete', data: { confirm: 'Are you sure?' } %></a></p>
-    <a class="dropdown-item" href="#">Switch to other Workspace</a>
-  </div>
- 
-</div>
-</li>
-  
-    <% if @channels %>
-
-
-  <% @channels.each do |channel| %>
-    <li class="list-group-item">#<%= link_to channel.name, channel_path(channel)  %></li>
-  <% end %>
-
-<% else %>
-
-<% end %>
-  
-  <li class="list-group-item">Vestibulum at eros</li>
-
-</ul>
+<%= render 'layouts/sidebar' %>
 
 </div>
-
-<div class="container" style="margin-top: 50px;">
+<div style="overflow:hidden;width:100%">
+<div class="container">
   <div class="row">
     <div class="col-sm-6 offset-3">
   <table class="table table-hover">
@@ -84,73 +65,114 @@ body {
   </div>
 </div>
 </div>
-
-    <div style="margin-left: 300px;">
-    <div id="message">
+    <div id="message_container">
+    <div style="margin-left: 300px; height: 450px;overflow-y: scroll; margin-top: -30px;" >
      <% if @messages %>
       <% @messages.each do |message| %>
-       <%=  message.user.email %><%= message.created_at %>
+       <%=  message.user.email %> | <%= message.created_at %>
 
       <div class="alert alert-primary" role="alert"> 
         <%=  message.name %>
-     <a class="dropdown-item" href="#"><%= link_to 'Remove', message_path(message), method: 'delete', data: { confirm: 'Are you sure?' } %></a>
-   <%= link_to 'Edit', edit_message_path(message), method: 'get'%>
+        <!-- star message --> 
+          <% if message.favourite == true %>
+          <i onclick="gofavourite(this)" star_id="<%= message.id %>" class="fa fa-star stars" style="position: absolute;left:90%;z-index: 999;color:yellow;"></i>
+          <% else %>
+          <i onclick="gofavourite(this)" star_id="<%= message.id %>" class="fa fa-star stars" style="position: absolute;left:90%;z-index: 999;"></i>
+          <% end %>  
+        <!--  -->
+
+        <br>
+     <a><%= link_to 'Remove', message_path(message), method: 'delete', data: { confirm: 'Are you sure?' } %></a> .
+     <%= link_to 'Edit', edit_message_path(message), method: 'get'%>
+    <%= form_tag("/star", method: "post",id:"form2" ,style:"transform:translate(0,-100%);") do %>
+        <input type="hidden" name="star_id" id="star_hidden" >
+    <% end %>
+    
+    <!-- thread -->
     <div class="float-right">
         <%= form_for @thread, :url => url_for(:controller => 'thread_replies', :action => 'create') do |f| %>
         <%= f.hidden_field :channel_id, value: @channel.id ,name:"channel_id" %>
         <%= f.hidden_field :message_id, value: message.id ,name:"message_id" %>
-      
      <a data-toggle="collapse" href="#" data-target="#collapse-<%= message.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
-     Reply 
-      </a>
-
-     
-      <a data-toggle="collapse" href="#" data-target="#collapse-aa" role="button" aria-expanded="false" aria-controls="collapseExample">
- 
-
+     Reply  
+     </a>
        |
-      <a data-toggle="collapse" href="#" data-target="#collapse-<%= message.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
+     <a data-toggle="collapse" href="#" data-target="#collapse1-<%= message.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
      View
-    </a>
+     </a> 
+     </div>
+     <br>
+    
 
-
-      </a>
-       </div>
        <div class="collapse" id="collapse-<%= message.id %>"> 
-      <div class="form-group"> 
-        <%= f.text_area :text, name:'text', class: 'form-control' %>
+        <div class="form-group"> 
+          <%= f.text_area :text, name:'text', class: 'form-control' %>
         </div>
-      <div class="form-group">
-     <%= f.submit "Send", class: 'btn btn-primary btn-sm' %>
-     </div>
-     </div>
-     
-  <% end %>
-      </div>             
+        <div class="form-group">
+          <%= f.submit "Send", class: 'btn btn-primary btn-sm' %>
+        </div>
+       </div>
+
+ 
+       <div class="collapse" id="collapse1-<%= message.id %>">       
+        <div class="form-group">
+         <ul class="list-group"> 
+          <% @threadList.each do |thread| %>     
+           <% if thread.message_id == message.id %>
+           <%= message.user.email %> | <%= thread.created_at %><br>
+           <li class="list-group-item list-group-item-info">        
+           <%= thread.text %>
+           <i class="float-lg-right">
+           <%= link_to 'Remove', thread_reply_path(thread), method:'delete', data:{confirm:'Are you sure?'} %> .
+         
+            </i>
+          </li>
+        </ul>
+           <% end %>
+           <% end %>
+        </div>
+       </div>
+
+   <% end %>
+
+      </div>   
+
 
     <% end %>
      <% else %>
      <div class="alert alert-primary" role="alert"> Lets Chat!"</div>
      <% end %>
+    </div>
+  </div>
+<!--  -->
+
+  <div class="textMessage">
+<%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create') do |f| %>
+  <%= f.hidden_field :channel_id, value: @channel.id ,name:"channel_id" %>
+  <div class="text-container">   
 
     </div>
-     
-  <div class="textMessage">
-<%= form_with(model: @message, :url => url_for(:controller => 'messages', :action => 'create')) do |f|%>
-  <%= f.hidden_field :channel_id, value: @channel.id ,name:"channel_id" %>
-  <div class="text-container">  
-    
+
     <div class="form-group">
     <%= f.text_area :name, name:'name', class: 'form-control' %>
     </div>
- 
-
   <div class="form-group">
      <%= f.submit "Send", class: 'btn btn-primary btn-sm' %>
   </div>
   <% end %>
-
   </div>
-
+</div>
+  
+   </div>
+ 
 </body>
+<script>
+            function gofavourite(a){
+                var demo = a.getAttribute("star_id");
+                document.getElementById("star_hidden").value = demo;
+
+               
+                document.getElementById("form2").submit();
+            }
+  </script>
 </html> 

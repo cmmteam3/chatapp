@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
-
+ scope "(:locale)", locale: /en|ja/ do
+  get 'my_aj/new'
   get 'users_workspace/index'
   get 'users_workspace/update'
   root 'signup#index'
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   resources :signup
   get 'thread_replies/new'
   get 'thread_replies/show'
+  get '/star', to:'messages#StarShow'
 
 
    resources :channels do
@@ -23,6 +25,12 @@ resources :workspaces do
   resources :users_workspace
 
 end
+
+end
+get "/star",to:"messages#ssss"
+  post "/star",to:"messages#star"
+
+
 end
 
 

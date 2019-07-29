@@ -1,0 +1,33 @@
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 58px;
+  left: 3px;
+  background-color: Lavender;
+  overflow-x: hidden;
+}
+
+
+
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.container{
+  margin-top: 80px;
+}
+p {
+  margin-left: 29px;
+}
+button {
+  color:red;
+}

@@ -1,0 +1,48 @@
+<div class="card">
+					<div class=" card-header">
+						<h4 class="text-center"><%= t('signup.new.signup') %> </h4>
+					</div>
+					<div class="card-body">
+					    <%= form_for  @user, url: {action: "create"} do |f| %>
+					
+					<%= f.label :name %>
+                    <%= form_group_for f, :name, label: false  do %>
+                     <div class="Input-group">
+                       <i class="fa fa-user"></i>
+                     <%= f.text_field :name, class: 'form-control', placeholder: t('signup.new.UserName') %>
+                      </div>
+                    <% end %>   
+
+                    <%= f.label :email %>
+                    <%= form_group_for f, :email, label: false  do %>
+                     <div class="Input-group">
+                     <i class="fa fa-envelope"></i>
+                     <%= f.text_field :email, class: 'form-control', placeholder: t('signup.new.Email') %>
+                      </div>
+                    <% end %>
+
+                    <%= f.label :password %>
+                    <%= form_group_for f, :password, label: false  do %>
+                     <div class="Input-group">
+                  <i class="fa fa-lock"></i>
+                     <%= f.password_field :password, class: 'form-control', placeholder: t('signup.new.Password') %>
+                      </div>
+                    <% end %>
+
+                    <%= f.label :password_confirmation %>
+                    <%= form_group_for f, :password_confirmation, label: false  do %>
+                     <div class="Input-group">
+                    <i class="fa fa-lock"></i>
+                     <%= f.password_field :password_confirmation, class:'form-control', placeholder: t('signup.new.password_confirmation') %>
+                      </div>
+                    <% end %>
+
+                    <div class="form-group">
+                     <%= f.submit t("signup.new.Save"), class: "btn btn-primary btn-flat btn-block" %>
+                    </div>
+                    <div class="form-group">
+                        <%= link_to 'Cancel', root_path, class: "btn btn-flat btn-block btn-primary" %>
+                    </div>
+					    <% end %>
+					</div>
+				</div>

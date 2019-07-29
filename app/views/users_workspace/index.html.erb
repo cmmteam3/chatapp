@@ -1,8 +1,33 @@
-<% @users.each do |user| %>
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <%= render 'layouts/navbar' %>
+
+    <div class="sidenav">
+   
+         <%= render 'layouts/sidebar' %>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+           <table class="table table-dark">
+  <thead>
+    <tr>
+      
+      <th scope="col"><%= t("users_workspace.index.Name") %></th>
+      <th scope="col"><%= t("users_workspace.index.Email") %></th>
+      <th scope="col"><%= t("users_workspace.index.Invite User") %></th>
+    </tr>
+  </thead>
+  <tbody>
+   
+    <% @users.each do |user| %>
                     <tr>
-                       
-                      
-            <td><%= user.email %></td>
+                    
+                <td><%= user.name %></td>
+                 <td><%= user.email %></td>
                   <td>
                 <% if !user.users_workspace.find_by(workspace_id: params[:workspace_id]).nil? %>
                             <% if user.users_workspace.find_by(workspace_id: params[:workspace_id]).role == 'member' %>
@@ -19,5 +44,13 @@
                         <% end %>
                            
                         </td>
+           
                           </tr>
                 <% end %>
+  </tbody>
+</table>
+    </div>
+</div>
+</div>
+  </body>
+  </html> 

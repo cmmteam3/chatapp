@@ -29,5 +29,133 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+# en:
+#   signup:
+#     new:
+#       signup: "Sign Up"
+#   activerecord:
+#     models:
+#      User : "User"
+#       name
 en:
-  hello: "Hello world"
+  Create Workspace Successfully: "Create Workspace Successfully"
+  Create Workspaace fail: "Create Workspaace fail"
+  Update successful: "Update successful"
+  Update fail: "Update fail"
+  Wokspace destroy successful: "Wokspace destroy successful"
+  User SignUp Successful: "User SignUp Successful"
+  Signup Not Successfull: "Signup Not Successfull"
+  Email address missing: "Email address missing"
+  Password missing: "Password missing"
+  Email address and password missing: "Email address and password missing"
+  Incorrect email/password combo: "Incorrect email/password combo"
+  Channel Successfully create: "Channel Successfully create"
+  Channel create fail: "Channel create fail"
+  Channel edit successful: "Channel edit successful"
+  Channel edit fail: "Channel edit fail"
+  Message destroy successful: "Message destroy successful"
+  Thread destroy successful: "Thread destroy successful"
+  Thread update successful: "Thread update successful"
+  email: "email"
+  password: "password"
+  User SignUp Successfully: "User SignUp Successfully"
+  Unknown user: "Unknown user"
+
+  signup:
+    new:
+      Save: "Save"
+      signup: "Sign up"
+      UserName: "UserName"
+      Email: "Email"
+      Password: "Password"
+      password_confirmation: "password_confirmation"
+    _form:
+      Rails chat Application: "Rails chat Application"
+  session:
+    new:
+      Login: "Login"
+  kaminari:
+    _first_page:
+      first: "first"
+    _last_page:
+      last: "last"
+    _next_page:
+      next: "next"
+    _prev_page:
+      previous: "previous"
+  workspaces:
+    index:
+      Create workspace: "Create workspace"
+    show:
+      Invite: "Invite"
+    new:
+      Create New Workspace: "Create New Workspace"
+      Save: "Save"
+      WorkSpaceName: "WorkSpaceName"
+    _form:
+      Edit: "Edit"
+      Remove: "Remove"
+      Add New Channel: "Add New Channel"
+      Invite member: "Invite member"
+    edit:
+      Edit Workspace Name: "Edit Workspace Name"
+      Edit Workspace: "Edit Workspace"
+
+  users_workspace: 
+    index:
+      Name : "Name"
+      Email: "Email"
+      Invite User: "Invite User"
+  channels_user:
+    index:
+      Name : "Name"
+      Email: "Email"
+      Invite User: "Invite User"
+
+  channels:
+    new:
+      Add New Channel: "Add New Channel"
+      Save: "Save"
+      Enter Channel Name: "Enter Channel Name"
+    edit:
+      Edit Channel: "Edit Channel"
+      Edit Channel Name: "Edit Channel Name"
+    show:
+      Send: "Send"
+    _navbar:
+      Setting: "Setting"
+      Edit: "Edit"
+      Remove: "Remove"
+      Invite: "Invite"
+      Rails chat Application: "Rails chat Application"
+  layouts:
+    _navbar:
+      Logout: "Logout"
+      Sign In: "Sign In"
+      Sign Up: "Sign Up"
+      Japan: "Japan"
+      English: "English"
+      Rails chat tutorial: "Rails chat tutorial"
+      Rails chat Application: "Rails chat Application"
+    _sidebar:
+      Invite: "Invite"
+  activerecord:
+    models:
+      user: "User"
+      workspace: "workspace"
+      channel: "channel"
+    attributes:
+      user:
+        name: "name"
+        email: "email"
+        password: "password"
+        password_confirmation: "password_confirmation"
+      session:
+          email: "Email"
+      workspace:
+        name: "name"
+      channel:
+        name: "name"
+        Public: "Public"
+
+          

@@ -61,6 +61,7 @@ host = 'teamchatapp.herokuapp.com' # ここをコピペすると失敗します�
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
+  config.log_formatter = MessagingFormatter.new
+  config.log_level = :debug
   
 end

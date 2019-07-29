@@ -7,18 +7,24 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   </head>
 
   <body>
       
-      <%= yield %>
-       <div class="container" style="margin-left: 150px;">
-        <div class="row">
-          <div class="col-sm-10">
-             <% flash.each do |key, value| %>
-             <div class="alert alert-<%= key %>"><%= value %></div>
-             <% end %>
-          </div>
-        </div>
+        <%= yield %>
+            
+         
+         <% if alert %>
+        <p class ="alert alert-danger"><%= alert %> </p>
+        <% end %>
+
+        <% if notice %>
+        <div class="col-sm-6 offset-sm-3"> <p class ="alert alert-success"><%= notice %> </p></div>
+        <% end %>
+  
   </body>
 </html>
