@@ -9,7 +9,7 @@ gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 gem 'popper_js', '~> 1.14.5'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+#gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 
  gem 'rails-i18n'
  gem 'kaminari'
- # gem 'pg' , '>= 0'
+ gem 'pg' 
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -56,9 +56,9 @@ group :development do
   # gem 'spring'
   # gem 'spring-watcher-listen', '~> 2.0.0'
 end
-# group :production do
-#   gem 'pg', '>= 0'
-# end
+ group :production do
+  gem 'pg', '>= 0'
+ end
 # group :test do
 #   # Adds support for Capybara system testing and selenium driver
 #   gem 'capybara', '>= 2.15'
