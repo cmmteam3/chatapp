@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'thread_replies/new'
   get 'thread_replies/show'
   get '/star', to:'messages#StarShow'
+  get "/star",to:"messages#ssss"
+  post "/star",to:"messages#star"
 
 
    resources :channels do
@@ -27,8 +29,6 @@ resources :workspaces do
 end
 
 end
-get "/star",to:"messages#ssss"
-  post "/star",to:"messages#star"
 
 
 end
