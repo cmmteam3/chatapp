@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'users_workspace/index'
   get 'users_workspace/update'
   root 'signup#index'
+  get    '/signup',   to: 'signup#index'
   get    '/login',   to: 'session#new'
   post   '/login',   to: 'session#create'
   get 'logout', to: 'session#destroy'

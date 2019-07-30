@@ -32,15 +32,15 @@
                 <% if !user.users_workspace.find_by(workspace_id: params[:workspace_id]).nil? %>
                             <% if user.users_workspace.find_by(workspace_id: params[:workspace_id]).role == 'member' %>
 
-                                <%= link_to "Uninvite",workspace_users_workspace_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+                                <%= link_to t('users_workspace.index.Uninvite'),workspace_users_workspace_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
                             <% end %>
                             <% if user.users_workspace.find_by(workspace_id: params[:workspace_id]).role.empty? %>
-                                <%= link_to "Invite", workspace_users_workspace_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+                                <%= link_to t('users_workspace.index.Invite'), workspace_users_workspace_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
                             <% end %>
                         <% end %>
 
                         <% if user.users_workspace.find_by(workspace_id: params[:workspace_id]).nil? %>
-                            <%= link_to "Invite", workspace_users_workspace_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
+                            <%= link_to t('users_workspace.index.Invite'), workspace_users_workspace_path(params[:workspace_id], user), method: :put, class: "btn btn-primary btn-sm", id: user.id %>
                         <% end %>
                            
                         </td>

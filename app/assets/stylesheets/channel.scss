@@ -1,0 +1,35 @@
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 90%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 58px;
+  left: 3px;
+  background-color: Lavender;
+  overflow-x: hidden;
+}
+.textMessage{
+  margin-top: 0px;
+  margin-left: 300px;
+}
+
+.showMessag{
+   margin-left: 150px;
+}
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.stars{
+        font-size:24px;color:grey;
+    }
+    .stars:hover {
+        color:yellow;
+    }

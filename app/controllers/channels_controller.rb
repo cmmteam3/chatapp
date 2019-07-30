@@ -36,6 +36,7 @@
 
             def edit
               @channel = Channel.find(params[:id])
+                @cu = ChannelsUser.all
              @workspace=Workspace.find_by_id(session[:current_workspace])
              @channels=Channel.where(:workspace_id => @workspace.id)
              @usersworkspace=UsersWorkspace.all
@@ -73,6 +74,7 @@
 
            def destroy
              Channel.find(params[:id]).destroy
+               @cu = ChannelsUser.all
              @workspace=Workspace.find(session[:current_workspace])
              redirect_to workspace_path(@workspace)
              

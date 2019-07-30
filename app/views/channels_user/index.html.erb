@@ -31,9 +31,9 @@
           
                   <td>
                        
-                       <%= link_to "Invite", channel_channels_user_path(params[:channel_id],:id=>usersworkspace.user_id), method: :put, class: "btn btn-primary btn-sm", id: usersworkspace.user_id %>
+                       <%= link_to t('channels_user.index.Invite'), channel_channels_user_path(params[:channel_id],:id=>usersworkspace.user_id), method: :put, class: "btn btn-primary btn-sm", id: usersworkspace.user_id %>
                    
-                        <%= link_to "Uninvite", channel_channels_user_path(params[:channel_id],usersworkspace.user_id), method: :put, class: "btn btn-primary btn-sm", id: usersworkspace.user_id %>
+                        <%= link_to t('channels_user.index.Uninvite'), channel_channels_user_path(params[:channel_id],usersworkspace.user_id), method: :put, class: "btn btn-primary btn-sm", id: usersworkspace.user_id %>
 
 
                        </td>

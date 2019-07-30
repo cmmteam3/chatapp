@@ -69,11 +69,13 @@ en:
       Email: "Email"
       Password: "Password"
       password_confirmation: "password_confirmation"
+      Cancel: "Cancel"
     _form:
       Rails chat Application: "Rails chat Application"
   session:
     new:
       Login: "Login"
+      Cancel: "Cancel"
   kaminari:
     _first_page:
       first: "first"
@@ -92,6 +94,7 @@ en:
       Create New Workspace: "Create New Workspace"
       Save: "Save"
       WorkSpaceName: "WorkSpaceName"
+      Cancel: "Cancel"
     _form:
       Edit: "Edit"
       Remove: "Remove"
@@ -100,34 +103,48 @@ en:
     edit:
       Edit Workspace Name: "Edit Workspace Name"
       Edit Workspace: "Edit Workspace"
-
+      Invite member: "Invite member"
+      Edit: "Edit"
+      Remove: "Remove"
+      delete: "delete"
+      Switch to other Workspace: "Switch to other Workspace"
+      Add New Channel: "Add New Channel"
+      Cancel: "Cancel"
   users_workspace: 
     index:
       Name : "Name"
       Email: "Email"
       Invite User: "Invite User"
+      Uninvite: "Uninvite"
+      Invite: "Invite"
   channels_user:
     index:
       Name : "Name"
       Email: "Email"
       Invite User: "Invite User"
-
+      Invite: "Invite"
+      Uninvite: "Uninvite"
   channels:
     new:
       Add New Channel: "Add New Channel"
       Save: "Save"
       Enter Channel Name: "Enter Channel Name"
+      Cancel: "Cancel"
     edit:
       Edit Channel: "Edit Channel"
       Edit Channel Name: "Edit Channel Name"
     show:
       Send: "Send"
+      Remove: "Remove"
+      Edit: "Edit"
+      Reply: "Reply"
+      View: "View"
     _navbar:
       Setting: "Setting"
       Edit: "Edit"
       Remove: "Remove"
       Invite: "Invite"
-      Rails chat Application: "Rails chat Application"
+      Team3 chat Application: "Team3 Chat Application"
   layouts:
     _navbar:
       Logout: "Logout"
@@ -135,15 +152,20 @@ en:
       Sign Up: "Sign Up"
       Japan: "Japan"
       English: "English"
-      Rails chat tutorial: "Rails chat tutorial"
-      Rails chat Application: "Rails chat Application"
+  
+      Team3ChatApplication: "Team3 Chat Application"
     _sidebar:
       Invite: "Invite"
+  messages:
+    edit:    
+      Edit Message: "Edit Message"
+      Edit Channel Name: "Edit Channel Name"
   activerecord:
     models:
       user: "User"
       workspace: "workspace"
       channel: "channel"
+      message: "message"
     attributes:
       user:
         name: "name"
@@ -157,5 +179,6 @@ en:
       channel:
         name: "name"
         Public: "Public"
-
+      message:
+        name: "Name"
           

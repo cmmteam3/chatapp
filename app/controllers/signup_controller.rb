@@ -12,7 +12,7 @@ class SignupController < ApplicationController
      flash[:notice] = t(:"User SignUp Successful")
      else
       flash[:alert] = t(:"Signup Not Successfull")
-     render 'new'
+     render 'signup/index'
       end
     end
       private 

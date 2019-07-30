@@ -31,11 +31,13 @@ ja:
       Email: "メールアドレス"
       Password: "パスワード"
       password_confirmation: "パスワード確認"
+      Cancel: "キャンセル"
     _form:
       Rails chat Application: "レールチャットアプリケーション"
   session:
     new:
       Login: "ログイン"
+      Cancel: "キャンセル"
   kaminari:
     _first_page:
       first: "最初"
@@ -54,6 +56,7 @@ ja:
       Create New Workspace: "新しいワークスペースを作成する"
       Save: "保存する"
       WorkSpaceName: "ワークスペース名"
+      Cancel: "キャンセル"
     _form:
       Edit: "編集する"
       Remove: "削除する"
@@ -62,33 +65,49 @@ ja:
     edit:
       Edit Workspace Name: "ワークスペース名を編集"
       Edit Workspace: "ワークスペースを編集"
+      Invite member: "メンバーを招待"
+      Edit: "編集する"
+      Remove: "削除する"
+      delete: "削除する"
+      Switch to other Workspace: "他のワークスペースに切り替える"
+      Add New Channel: "新しいチャンネルを追加"
+      Cancel: "キャンセル"
   users_workspace: 
     index:
       Name : "名"
       Email: "メール"
       Invite User: "ユーザーを招待"
+      Uninvite: "招かない"
+      Invite: "招待する"
   channels_user:
     index:
       Name : "名"
       Email: "メール"
       Invite User: "ユーザーを招待"
-    
+      Invite: "招待する"
+      Uninvite: "招かない"
+
   channels:
     new:
       Add New Channel: "新しいチャンネルを追加"
       Save: "保存する"
       Enter Channel Name: "チャンネル名を入力"
+      Cancel: "キャンセル"
     edit:
       Edit Channel: "チャンネルを編集"
       Edit Channel Name: "チャンネル名を編集"
     show:
       Send: "送る"
+      Remove: "削除する"
+      Edit: "編集する"
+      Reply: "応答"
+      View: "見る"
     _navbar:
       Setting: "設定"
-      Edit: "編集する"
+      Edit: "編集する" 
       Remove: "削除する"
       Invite: "誘う"
-      Rails chat Application: "レールチャットアプリケーション"
+      Team3 chat Application: "チーム3チャットアプリケーション"
   layouts:
     _navbar:
       Logout: "ログアウト"
@@ -96,15 +115,22 @@ ja:
       Sign Up: "登録する"
       Japan: "日本"
       English: "英語"
-      Rails chat tutorial: "レールチャットチュートリアル"
+      
+      Team3ChatApplication: "チーム3チャットアプリケーション"
+
     _sidebar:
       Invite: "招待する"
       Rails chat Application: "レールチャットアプリケーション"
+  messages:
+    edit:    
+      Edit Message: "メッセージを編集"
+      Edit Channel Name: "チャンネル名を編集"
   activerecord:
     models:
       user: "ユーザー"
       workspace: "ワークスペース"
       channel: "チャネル"
+      message: "メッセージ"
     attributes:
       user:
         name: "名"
@@ -116,7 +142,8 @@ ja:
       channel:
         name: "名"
         Public: "パブリック"
-
+      message:
+        name: "名"
       
 
 

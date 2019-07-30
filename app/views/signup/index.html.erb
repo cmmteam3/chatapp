@@ -7,19 +7,15 @@
 <body>
 	<%= render 'layouts/navbar' %>
           
-    		<div class="row">
-    			<div class="col-sm-7">
-                <%= image_tag "home.jpg" %>
-    			</div>
-    	
-                
-    			<div class="col-sm-4" style="margin-top:25px;">
-    				<%= render 'signup/newForm' %>
-    			</div>
-    		</div>
-    		
-    		
-    
-  
+    		<div class="col-sm-12">
+               <div class="row">
+                <div class="col-sm-6">
+                    <%= image_tag "home.jpg" %>
+                </div>
+                <div class="col-sm-4" style="margin-top:30px;margin-left:150px;">
+                    <%= render 'signup/newForm' %>
+                </div>
+                </div>
+              </div>
 </body>
 </html>

@@ -2,177 +2,109 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  font-family: "Lato", sans-serif;
-}
-
-.sidenav {
-  height: 100%;
-  width: 250px;
-  position: fixed;
-  z-index: 1;
-  top: 58px;
-  left: 3px;
-  background-color: Lavender;
-  overflow-x: hidden;
-}
-.textMessage{
-  margin-top: 0px;
-  margin-left: 300px;
-}
-
-.showMessag{
-   margin-left: 150px;
-}
-
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-
-.stars{
-        font-size:24px;color:grey;
-    }
-    .stars:hover {
-        color:yellow;
-    }
-
-   
-
-}
-</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-
-    
-<%= render 'channels/navbar' %>
-
-<div class="sidenav">
-<%= render 'layouts/sidebar' %>
-
-</div>
-<div style="overflow:hidden;width:100%">
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6 offset-3">
-  <table class="table table-hover">
-</table>
-<div class="form-group mx-sm-0">
-  
+  <%= render 'channels/navbar' %>
+  <div class="sidenav">
+    <%= render 'layouts/sidebar' %>
   </div>
-</div>
-</div>
-    <div id="message_container">
-    <div style="margin-left: 300px; height: 450px;overflow-y: scroll; margin-top: -30px;" >
-     <% if @messages %>
-      <% @messages.each do |message| %>
-       <%=  message.user.email %> | <%= message.created_at %>
-
-      <div class="alert alert-primary" role="alert"> 
-        <%=  message.name %>
-        <!-- star message --> 
+  <div style="overflow:hidden;width:100%">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 offset-3">
+          <table class="table table-hover">
+          </table>
+          <div class="form-group mx-sm-0">
+          </div>
+        </div>
+      </div>
+      <div id="message_container">
+        <div style="margin-left: 300px; height: 400px;overflow-y: scroll; margin-top: -30px;" >
+         <% if @messages %>
+         <% @messages.each do |message| %>
+         <%=  message.user.email %> | <%= message.created_at %>
+         <div class="alert alert-primary" role="alert"> 
+          <%=  message.name %>
           <% if message.favourite == true %>
           <i onclick="gofavourite(this)" star_id="<%= message.id %>" class="fa fa-star stars" style="position: absolute;left:90%;z-index: 999;color:yellow;"></i>
           <% else %>
           <i onclick="gofavourite(this)" star_id="<%= message.id %>" class="fa fa-star stars" style="position: absolute;left:90%;z-index: 999;"></i>
           <% end %>  
-        <!--  -->
-
-        <br>
-     <a><%= link_to 'Remove', message_path(message), method: 'delete', data: { confirm: 'Are you sure?' } %></a> .
-     <%= link_to 'Edit', edit_message_path(message), method: 'get'%>
-    <%= form_tag("/star", method: "post",id:"form2" ,style:"transform:translate(0,-100%);") do %>
-        <input type="hidden" name="star_id" id="star_hidden" >
-    <% end %>
-    
-    <!-- thread -->
-    <div class="float-right">
-        <%= form_for @thread, :url => url_for(:controller => 'thread_replies', :action => 'create') do |f| %>
-        <%= f.hidden_field :channel_id, value: @channel.id ,name:"channel_id" %>
-        <%= f.hidden_field :message_id, value: message.id ,name:"message_id" %>
-     <a data-toggle="collapse" href="#" data-target="#collapse-<%= message.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
-     Reply  
-     </a>
-       |
-     <a data-toggle="collapse" href="#" data-target="#collapse1-<%= message.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
-     View
-     </a> 
+          <br>
+          <a><%= link_to t('channels.show.Remove'), message_path(message), method: 'delete', data: { confirm: 'Are you sure?' } %></a> .
+          <%= link_to t('channels.show.Edit'), edit_message_path(message), method: 'get'%>
+          <%= form_tag("/star", method: "post",id:"form2" ,style:"transform:translate(0,-100%);") do %>
+          <input type="hidden" name="star_id" id="star_hidden" >
+          <% end %>
+          <div class="float-right">
+            <%= form_for @thread, :url => url_for(:controller => 'thread_replies', :action => 'create') do |f| %>
+            <%= f.hidden_field :channel_id, value: @channel.id ,name:"channel_id" %>
+            <%= f.hidden_field :message_id, value: message.id ,name:"message_id" %>
+            <a data-toggle="collapse" href="#" data-target="#collapse-<%= message.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
+             <%= t('channels.show.Reply') %>  
+           </a>
+           |
+           <a data-toggle="collapse" href="#" data-target="#collapse1-<%= message.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
+             <%= t('channels.show.View') %>
+           </a> 
+         </div>
+         <br>
+         <div class="collapse" id="collapse-<%= message.id %>"> 
+          <div class="form-group"> 
+            <%= f.text_area :text, name:'text', class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.submit t('channels.show.Send'), class: 'btn btn-primary btn-sm' %>
+          </div>
+        </div>
+        <div class="collapse" id="collapse1-<%= message.id %>">       
+          <div class="form-group">
+           <ul class="list-group"> 
+            <% @threadList.each do |thread| %>     
+            <% if thread.message_id == message.id %>
+            <%= message.user.email %> | <%= thread.created_at %><br>
+            <li class="list-group-item list-group-item-info">        
+             <%= thread.text %>
+             <i class="float-lg-right">
+               <%= link_to t('channels.show.Remove'), thread_reply_path(thread), method:'delete', data:{confirm:'Are you sure?'} %> .
+             </i>
+           </li>
+         </ul>
+         <% end %>
+         <% end %>
+       </div>
      </div>
-     <br>
-    
-
-       <div class="collapse" id="collapse-<%= message.id %>"> 
-        <div class="form-group"> 
-          <%= f.text_area :text, name:'text', class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.submit "Send", class: 'btn btn-primary btn-sm' %>
-        </div>
-       </div>
-
- 
-       <div class="collapse" id="collapse1-<%= message.id %>">       
-        <div class="form-group">
-         <ul class="list-group"> 
-          <% @threadList.each do |thread| %>     
-           <% if thread.message_id == message.id %>
-           <%= message.user.email %> | <%= thread.created_at %><br>
-           <li class="list-group-item list-group-item-info">        
-           <%= thread.text %>
-           <i class="float-lg-right">
-           <%= link_to 'Remove', thread_reply_path(thread), method:'delete', data:{confirm:'Are you sure?'} %> .
-         
-            </i>
-          </li>
-        </ul>
-           <% end %>
-           <% end %>
-        </div>
-       </div>
-
-   <% end %>
-
-      </div>   
-
-
-    <% end %>
-     <% else %>
-     <div class="alert alert-primary" role="alert"> Lets Chat!"</div>
      <% end %>
-    </div>
-  </div>
+   </div>   
+   <% end %>
+   <% else %>
+   <div class="alert alert-primary" role="alert"> Lets Chat!"</div>
+   <% end %>
+ </div>
+</div>
 <!--  -->
-
-  <div class="textMessage">
-<%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create') do |f| %>
+<div class="textMessage">
+  <%= form_for @message, :url => url_for(:controller => 'messages', :action => 'create') do |f| %>
   <%= f.hidden_field :channel_id, value: @channel.id ,name:"channel_id" %>
   <div class="text-container">   
-
-    </div>
-
-    <div class="form-group">
-    <%= f.text_area :name, name:'name', class: 'form-control' %>
-    </div>
+  </div>
   <div class="form-group">
-     <%= f.submit "Send", class: 'btn btn-primary btn-sm' %>
+    <%= f.text_area :name, name:'name', class: 'form-control' %>
   </div>
-  <% end %>
-  </div>
+  <div class="form-group">
+   <%= f.submit t('channels.show.Send'), class: 'btn btn-primary btn-sm' %>
+ </div>
+ <% end %>
 </div>
-  
-   </div>
- 
+</div>
+</div>
 </body>
 <script>
-            function gofavourite(a){
-                var demo = a.getAttribute("star_id");
-                document.getElementById("star_hidden").value = demo;
-
-               
-                document.getElementById("form2").submit();
-            }
-  </script>
+  function gofavourite(a){
+    var demo = a.getAttribute("star_id");
+    document.getElementById("star_hidden").value = demo;
+    document.getElementById("form2").submit();
+  }
+</script>
 </html> 

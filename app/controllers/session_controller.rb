@@ -25,7 +25,7 @@
     end
     def destroy
     	session[:user_id]= nil
-    	redirect_to root_url
+    redirect_to :controller => 'session', :action => 'new' 
     end
 
  def redirect(alert)

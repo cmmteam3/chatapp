@@ -9,7 +9,7 @@
   <div class="d-flex justify-content-center">
     <div class="col-sm-4">
     <ul class="list-group">
-   <%= render partial: 'workspace', collection: @workspacelists %>
+   <%= render partial: 'workspace', collection: @workspace_list %>
    <%= paginate @workspace_list %>
      </ul>
     </div>
@@ -17,8 +17,8 @@
   <div class="d-flex justify-content-center p-2">
     <div class="form-row">
         <div class="form-group">
-          <%= link_to t('workspaces.index.Create workspace'), new_workspace_path, class: "btn btn-success" %>
-
+          <%= link_to t('workspaces.index.Create workspace'), new_workspace_path, class: "btn btn-info" %>
+        </div>
     </div>
     </div>
   </body>

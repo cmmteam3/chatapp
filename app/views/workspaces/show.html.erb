@@ -34,61 +34,61 @@
     <%= render 'layouts/navbar' %>
 
     <div class="sidenav">
-   
-               <ul class="list-group">
+     
+     <ul class="list-group">
 
-        <li class="list-group-item">
-          <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:red">
-             <%= @workspace.name %>
-           </button>
+      <li class="list-group-item">
+        <div class="dropdown">
+          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:red">
+           <%= @workspace.name %>
+         </button>
 
-           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            
+         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          
 
-             <p style="margin-left: 29px"><%= link_to t('workspaces._form.Edit'), edit_workspace_path(@workspace), method: 'get'%></p>
-             <p style="margin-left: 29px"> <a class="dropdown-item" href="#"><%= link_to t('workspaces._form.Remove'), workspace_path(@workspace), method: 'delete', data: { confirm: 'Are you sure?' } %></a></p>
-             <a class="dropdown-item" href="#"></a>
-           </div>
+           <p style="margin-left: 29px"><%= link_to t('workspaces._form.Edit'), edit_workspace_path(@workspace), method: 'get'%></p>
+           <p style="margin-left: 29px"> <a class="dropdown-item" href="#"><%= link_to t('workspaces._form.Remove'), workspace_path(@workspace), method: 'delete', data: { confirm: 'Are you sure?' } %></a></p>
+           <a class="dropdown-item" href="#"></a>
+         </div>
          
 
 
-         </div></li>
-         <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= t('workspaces._form.Add New Channel') %>
-          <span class="badge  badge-pill">
-           <%= link_to " #", new_channel_path(:id =>@workspace.id) %></span>
-         </li>
+       </div></li>
+       <li class="list-group-item d-flex justify-content-between align-items-center">
+        <%= t('workspaces._form.Add New Channel') %>
+        <span class="badge  badge-pill">
+         <%= link_to " #", new_channel_path(:id =>@workspace.id) %></span>
+       </li>
 
 
 
-     <% if @channels %>
-  <% @channels.each do |channel| %>
-    <% tmp = 0 %>
-    <% @cu.each do |cu|%>
-        <% if cu.user_id == current_user.id and cu.channel_id == channel.id %>
-            <% tmp = 1%>
-        <% end %>
-    <% end %>
-    <% if channel.privacy == true %>
-      <li class="list-group-item">#<%= link_to channel.name, channel_path(channel) %></li>
-    <% else %>
-      <% if tmp == 1 %>
-        <li class="list-group-item">#<%= link_to channel.name, channel_path(channel) %></li>
-      <% else %>
+       <% if @channels %>
+       <% @channels.each do |channel| %>
+       <% tmp = 0 %>
+       <% @cu.each do |cu|%>
+       <% if cu.user_id == current_user.id and cu.channel_id == channel.id %>
+       <% tmp = 1%>
+       <% end %>
+       <% end %>
+       <% if channel.privacy == true %>
+       <li class="list-group-item">#<%= link_to channel.name, channel_path(channel) %></li>
+       <% else %>
+       <% if tmp == 1 %>
+       <li class="list-group-item">#<%= link_to channel.name, channel_path(channel) %></li>
+       <% else %>
 
-      <% end %>
-    <% end %>
-    
-  <% end %>
+       <% end %>
+       <% end %>
+       
+       <% end %>
 
-<% else %>
+       <% else %>
 
-<% end %>
-      <li class="list-group-item"><%= link_to t("workspaces.show.Invite"), workspace_users_workspace_index_path(@workspace) %></li> 
+       <% end %>
+       <li class="list-group-item"><%= link_to t("workspaces.show.Invite"), workspace_users_workspace_index_path(@workspace) %></li> 
      </ul>
 
-    </div>
-    
-  </body>
-  </html> 
+   </div>
+   
+ </body>
+ </html> 

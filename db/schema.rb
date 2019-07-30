@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_07_29_032449) do
 
-  create_table "channels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "channels", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.boolean "privacy"
     t.bigint "workspace_id"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_07_29_032449) do
     t.index ["workspace_id"], name: "index_channels_on_workspace_id"
   end
 
-  create_table "channels_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "channels_users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "channel_id"
     t.string "role"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_07_29_032449) do
     t.index ["user_id"], name: "index_channels_users_on_user_id"
   end
 
-  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.text "name"
     t.bigint "channel_id"
     t.bigint "user_id"
@@ -42,13 +42,13 @@ ActiveRecord::Schema.define(version: 2019_07_29_032449) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "my_ajs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "my_ajs", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "thread_replies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "thread_replies", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "text"
     t.bigint "message_id"
     t.bigint "channel_id"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2019_07_29_032449) do
     t.index ["user_id"], name: "index_thread_replies_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2019_07_29_032449) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users_workspaces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users_workspaces", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "workspace_id"
     t.datetime "created_at", null: false
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2019_07_29_032449) do
     t.index ["workspace_id"], name: "index_users_workspaces_on_workspace_id"
   end
 
-  create_table "workspaces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "workspaces", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

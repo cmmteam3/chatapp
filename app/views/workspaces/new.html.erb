@@ -1,41 +1,40 @@
 <%= render 'layouts/navbar' %>
 <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <title>Chap Application</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Chap Application</title>
 <div class="wrapper hold-transition skin-blue layout-top-nav">
   <body class="hold-transition register-page">
+    <div class="register-box-body col-sm-6 col-soffset-3" style="margin-top: 100px">
+     <div class="container">
+      <div class="row">
+        <div class="col-sm-9 offset-sm-7 ">
+          <div class="card">
+            <div class="card card-header text-center text-info">
+             <%= t('workspaces.new.Create New Workspace') %>
+           </div>
+           <div class="card card-body">
+             <%= form_for @workspace, url: {action: "create"} do |f| %>
+             <%= f.label :name, class: 'text-info text-uppercase'  %>
+             <%= form_group_for f, :name, label: false  do %>
+             <div class="Input-group">
+               <%= f.text_field :name, class: 'form-control', placeholder: t('workspaces.new.WorkSpaceName') %>
+             </div>
+             <% end %>   
+             <div class="form-group">
+               <%= f.submit t('workspaces.new.Save'), class: "btn btn-info" %>
+               <%= link_to t('workspaces.new.Cancel'), workspaces_path, class: "btn btn-info" %>
+             </div>
+             <% end %>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div></div></div>
+ </body>
+ </html>
 
-  <div class="register-box-body col-sm-6 col-soffset-3" style="margin-top: 100px">
- 
-   <div class="container">
-    <div class="row">
-      <div class="col-sm-9 offset-sm-7 ">
-      <div class="card">
-        <div class="card card-header text-center">
-         <%= t('workspaces.new.Create New Workspace') %>
-      </div>
-      <div class="card card-body">
-     <%= form_for @workspace, url: {action: "create"} do |f| %>
-                   <%= f.label :name %>
-                    <%= form_group_for f, :name, label: false  do %>
-                     <div class="Input-group">
-                     <%= f.text_field :name, class: 'form-control', placeholder: t('workspaces.new.WorkSpaceName') %>
-                      </div>
-                    <% end %>   
-                     <div class="form-group">
-                     <%= f.submit t('workspaces.new.Save'), class: "btn btn-primary btn-flat btn-block" %>
-                    </div>
-          <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div></div></div>
-</body>
-</html>
 
-
-<script>
+ <script>
   $(function () {
     $('input').iCheck({
       checkboxClass: 'icheckbox_square-blue',

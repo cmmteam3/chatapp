@@ -8,8 +8,8 @@
         @workspace=Workspace.all
         @workspace_list = User.all
         @usersworkspace=UsersWorkspace.all
-        @workspacelists = User.all.find_by(id: current_user).workspaces
-        @workspace_list = User.all.find_by(id: current_user.id).users_workspace.page(params[:page]).per(5)
+       # @workspacelists = User.all.find_by(id: current_user).workspaces
+        @workspace_list = User.all.find_by(id: current_user.id).workspaces.page(params[:page]).per(5)
         @channelsuser=User.all.find_by(id: current_user).channels_user
 
     end
@@ -66,7 +66,7 @@
      def destroy
        Workspace.find(params[:id]).destroy
         flash[:success] = t(:"Wokspace destroy successful")
-         redirect_to root_path
+        redirect_to :controller => 'workspaces', :action => 'index'
     end
     
     

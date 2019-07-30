@@ -44,13 +44,13 @@ body {
  <div class="card">
 
   <h5 class="card-header info-color white-text text-center ">
-    <strong> Edit Message</strong>
+    <strong><%= t('messages.edit.Edit Message') %> </strong>
   </h5>
   <div >
   	<%= form_with model: @messages do |form| %>
 <div class="form-group">
 <%= form.label :name %>
-  <%= form.text_field :name,  name:'name',placeholder: "Edit Channel Name",class:'form-control' %>
+  <%= form.text_field :name,  name:'name',placeholder: t('messages.edit.Edit Channel Name'),class:'form-control' %>
 </div>
  <%= form.submit class: "btn btn-primary btn-flat" %>  
 <% end %>

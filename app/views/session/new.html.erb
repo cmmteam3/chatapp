@@ -13,30 +13,27 @@
 			<div class="col-sm-6 offset-sm-3">
 				<div class="car">
 					<div class="card card-header">
-						<h4 class="text-center"><%= t'session.new.Login' %></h2>
-					</div>
-					<div class="card card-body">
-					  <%= form_for(:session,  url: login_path) do |f| %>
-					  <div class="form">
-					  	  <%= t('email') %>
-                          <%= f.text_field :email, class: 'form-control' %>
-					  </div>
-					  <div class="form-group">
-					  	  <%= t('password') %>
-                          <%= f.password_field :password, class: 'form-control' %>
-					  </div>
-					   <div class="form-group">
-                           	    <%= f.submit t("session.new.Login"), class: "btn btn-primary btn-flat btn-block" %>
-                           </div>
-                           <div class="form-group">
-                           	<%= link_to 'Cancel', root_path, class: "btn btn-flat btn-block btn-primary" %>
-                           </div>
-					  <% end %>
-					</div>
+						<h4 class="text-center text-info"><%= t'session.new.Login' %></h2>
+						</div>
+						<div class="card card-body">
+							<%= form_for(:session,  url: login_path) do |f| %>
+							<div class="form">
+								<i class="fa fa-envelope text-info text-uppercase">  <%= t('email') %></i>
+								<%= f.text_field :email, class: 'form-control' %>
+							</div>
+							<div class="form-group text-info text-uppercase">
+								<i class="fa fa-lock text-info text-uppercase">  <%= t('password') %></i>
+								<%= f.password_field :password, class: 'form-control' %>
+							</div>
+							<div class="form-group">
+								<%= f.submit t("session.new.Login"), class: "btn btn-info" %>
+								<%= link_to t('session.new.Cancel'), root_path, class: "btn btn-info" %>
+								<% end %>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</body>
-</html>
+	</body>
+	</html>

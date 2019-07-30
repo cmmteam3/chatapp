@@ -7,30 +7,23 @@
   <link rel="stylesheet" href="">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar- bg-light justify-content-between" style=" color:255,255,255;">
-  <a class="navbar-brand" href="#"><%= t('layouts._navbar.Rails Chat Application') %></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-bar-collapse" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-   <div class="navbar-light">
-     
+  <nav class="navbar navbar-expand-lg navbar-light bg-info justify-content-between">
+    <a class="navbar-brand text-white font-weight-bold" href="#"><%= t('layouts._navbar.Team3ChatApplication') %></a>
+    <div class="navbar-light text-white">
      <% if current_user %>
-     <%= current_user.name %>
-      <%= link_to t('layouts._navbar.Logout'), logout_path %>
-   <% else %> 
-    <%= link_to t('layouts._navbar.Sign In'), login_path %> <%= link_to t('layouts._navbar.Sign Up'), new_signup_path %>
-  <% end %>  
+     <%= current_user.name %> |
+     <%= link_to t('layouts._navbar.Logout'), logout_path, style:"color:white;" %> |
+     <% else %> 
+     <%= link_to t('layouts._navbar.Sign In'), login_path, style:"color:white;" %> |
+     <%= link_to t('layouts._navbar.Sign Up'), signup_path, style:"color:white;" %> |
+     <% end %>  
 
-
-   <!-- <div class ="leng"> -->
- <% if I18n.locale == I18n.default_locale %>
- <%= link_to t('layouts._navbar.Japan'),{:locale => 'ja'} %> 
- <% else %>
- <%= link_to t('layouts._navbar.English'),{:locale => 'en'} %> 
-<% end %>
- </div>
-
-</nav>
+     <% if I18n.locale == I18n.default_locale %>
+     <%= link_to t('layouts._navbar.Japan'),{:locale => 'ja'}, style:"color:white;" %> 
+     <% else %>
+     <%= link_to t('layouts._navbar.English'),{:locale => 'en'}, style:"color:white;" %> 
+     <% end %>
+   </div>
+ </nav>
 </body>
 </html>
