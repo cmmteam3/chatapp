@@ -4,6 +4,7 @@
            @workspace=Workspace.find_by_id(session[:current_workspace])
            @channels=Channel.where(:workspace_id => @workspace.id)
            @usersworkspace=UsersWorkspace.all
+           @cu = ChannelsUser.all
            @channelsuser=User.all.find_by(id: current_user).channels_user
     end
     def update

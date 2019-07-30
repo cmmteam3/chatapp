@@ -7,11 +7,13 @@
      @workspace= Workspace.find(params[:id])
      @channels=Channel.where(:workspace_id => @workspace.id)
      @message = Message.new
+     @cu = ChannelsUser.all
      #@usersworkspace=UsersWorkspace.all
         end
     def index
+          @cu = ChannelsUser.all
           @channels = Channel.all
-         @channelsuser = User.all.find_by(id: current_user).channels_user
+          @channelsuser = User.all.find_by(id: current_user).channels_user
     
     end
     
@@ -59,6 +61,7 @@
              @usersworkspace=UsersWorkspace.all
              @message=Message.new
              @thread=ThreadReply.new
+             @cu = ChannelsUser.all
              @threadList=ThreadReply.all
              @messages=Message.all.includes(:user).where(channel_id: @channel)
               @workspace=Workspace.find_by_id(session[:current_workspace])

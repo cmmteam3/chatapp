@@ -42,20 +42,29 @@
     </header>
   <body>
   <table>
-    	<% @channels.each do |channel| %>
-      <tr>
-        <td><%= link_to channel.name, channel_path(channel) %></td>     
-    	<% end %>
-       <% @channelsuser.each do |channelsuser| %>
-      <% if channelsuser.role=='member' %>
-        <li class="list-group-item">#<%= link_to channelsuser.channel.name, channel_path(channelsuser.channel_id)  %></li>
-       
-       <% else %>
-      
+    	
+
+   
+  <% @channels.each do |channel| %>
+    <% tmp = 0 %>
+    <% @cu.each do |cu|%>
+        <% if cu.user_id == current_user.id and cu.channel_id == channel.id %>
+            <% tmp = 1%>
+        <% end %>
+    <% end %>
+    <% if channel.privacy == true %>
+      <li class="list-group-item">#<%= link_to channel.name, channel_path(channel) %></li>
+    <% else %>
+      <% if tmp == 1 %>
+        <li class="list-group-item">#<%= link_to channel.name, channel_path(channel) %></li>
+      <% else %>
+
       <% end %>
+    <% end %>
+    
+  <% end %>
 
 
-    <% end %> 
   </table>
 
     </body>
