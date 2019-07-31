@@ -1,52 +1,49 @@
-      <ul class="list-group">
-
-        <li class="list-group-item">
-          <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:red">
-             <%= @workspace.name %>
-           </button>
-
-           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            
-
-             <p style="margin-left: 29px"><%= link_to t('workspaces._form.Edit'), edit_workspace_path(@workspace), method: 'get'%></p>
-             <p style="margin-left: 29px"> <a class="dropdown-item" href="#"><%= link_to t('workspaces._form.Remove'), workspace_path(@workspace), method: 'delete', data: { confirm: 'Are you sure?' } %></a></p>
-             <a class="dropdown-item" href="#"></a>
-           </div>
-         
-
-
-         </div></li>
-         <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= t('workspaces._form.Add New Channel') %>
-          <span class="badge  badge-pill">
-           <%= link_to " #", new_channel_path(:id =>@workspace.id) %></span>
-         </li>
-
-
-
-        <% if @channels %>
-  <% @channels.each do |channel| %>
-    <% tmp = 0 %>
-    <% @cu.each do |cu|%>
-        <% if cu.user_id == current_user.id and cu.channel_id == channel.id %>
-            <% tmp = 1%>
-        <% end %>
-    <% end %>
-    <% if channel.privacy == true %>
-      <li class="list-group-item">#<%= link_to channel.name, channel_path(channel) %></li>
-    <% else %>
-      <% if tmp == 1 %>
-        <li class="list-group-item">#<%= link_to channel.name, channel_path(channel) %></li>
-      <% else %>
-
-      <% end %>
-    <% end %>
-    
-  <% end %>
-
-<% else %>
-
-<% end %>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="dropdown">
+          <button class="btn dropdown-toggle text-info font-weight-bold" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <%= @workspace.name %>
+         </button>
+         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <% if @works %>
+          <% @works.each do|usersworkspace| %>
+          <% if usersworkspace.role=='owner' && usersworkspace.workspace_id==@workspace.id %>
+          <p style="margin-left: 29px"><%= link_to t('workspaces._form.Edit'), edit_workspace_path(@workspace), method: 'get', class:'text-info' %></p>
+          <p style="margin-left: 29px"> <a class="dropdown-item" href="#"><%= link_to t('workspaces._form.Remove'), workspace_path(@workspace), method: 'delete', data: { confirm: 'Are you sure?' }, class:'text-info' %></a></p>
+          <!-- <a class="dropdown-item" href="#"></a> -->     
+          <% else %> 
+          <% end %>
+          <% end %>
+          <% else %>
+          <% end %>
+        </div>
+      </div></li>
+      <li class="list-group-item d-flex justify-content-between align-items-center text-info font-weight-bold">
+        <%= t('workspaces._form.Add New Channel') %>
+        <span class="badge  badge-pill">
+         <%= link_to " #", new_channel_path(:id =>@workspace.id) %></span>
+       </li>
+       <% if @channels %>
+       <% @channels.each do |channel| %>
+       <% tmp = 0 %>
+       <% @cu.each do |cu|%>
+       <% if cu.user_id == current_user.id and cu.channel_id == channel.id %>
+       <% tmp = 1%>
+       <% end %>
+       <% end %>
+       <% if channel.privacy == true %>
+       <li class="list-group-item">#<%= link_to channel.name, channel_path(channel), class:'font-weight-bold text-info' %></li>
+       <% else %>
+       <% if tmp == 1 %>
+       <li class="list-group-item">#<%= link_to channel.name, channel_path(channel), class:'font-weight-bold text-info' %></li>
+       <% else %>
+       <% end %>
+       <% end %>    
+       <% end %>
+       <% else %>
+       <% end %>
      </ul>
-<li class="list-group-item"><%= link_to t("layouts._sidebar.Invite"), workspace_users_workspace_index_path(@workspace) %></li> 
+     <li class="list-group-item"><%= link_to t("layouts._sidebar.Invite"), workspace_users_workspace_index_path(@workspace), class:'font-weight-bold text-info' %></li> 
+    
+
+

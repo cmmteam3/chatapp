@@ -5,28 +5,28 @@
 <div class="card-body">
  <%= form_for  @user, url: {action: "create"} do |f| %>
 
- <i class="fa fa-user text-info text-uppercase">  <%= f.label :Name %></i>
+ <i class="fa fa-user text-info text-uppercase">  <%= f.label :name %></i>
  <%= form_group_for f, :name, label: false  do %>
  <div class="Input-group">
      <%= f.text_field :name, class: 'form-control', placeholder: t('signup.new.UserName') %>
  </div>
  <% end %>   
 
- <i class="fa fa-envelope text-info text-uppercase">  <%= f.label :Email %></i>
+ <i class="fa fa-envelope text-info text-uppercase">  <%= f.label :email %></i>
  <%= form_group_for f, :email, label: false  do %>
  <div class="Input-group">   
      <%= f.text_field :email, class: 'form-control', placeholder: t('signup.new.Email') %>
  </div>
  <% end %>
 
- <i class="fa fa-lock text-info text-uppercase">  <%= f.label :Password %></i>
+ <i class="fa fa-lock text-info text-uppercase">  <%= f.label :password %></i>
  <%= form_group_for f, :password, label: false  do %>
  <div class="Input-group">               
      <%= f.password_field :password, class: 'form-control', placeholder: t('signup.new.Password') %>
  </div>
  <% end %>
 
- <i class="fa fa-lock text-info text-uppercase">  <%= f.label :Password_Confirmation %> </i>
+ <i class="fa fa-lock text-info text-uppercase">  <%= f.label :password_confirmation %> </i>
  <%= form_group_for f, :password_confirmation, label: false  do %>
  <div class="Input-group">
 

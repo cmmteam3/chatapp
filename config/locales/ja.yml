@@ -2,7 +2,7 @@ ja:
   Create Workspace Successfully: "ワークスペースを作成する"
   Create Workspaace fail: "ワークスペース作成の失敗"
   Update successful: "更新に成功"
-  Update fail: "更新失敗"
+  # Update fail: "更新失敗"
   Wokspace destroy successful: "ワークスペース破壊成功"
   User SignUp Successful: "ユーザーサインアップ成功"
   Signup Not Successfull: "申し込みが成功しなかった"
@@ -18,7 +18,7 @@ ja:
   Thread destroy successful: "スレッド破棄成功"
   Thread update successful: "スレッド更新成功"
   Unknown user: "不明なユーザー"
-
+  No Star List Message: "スターリストなしメッセージ"
   email: "メール"
   password: "パスワード"
   User SignUp Successfully: "ユーザーサインアップ成功"
@@ -96,12 +96,14 @@ ja:
     edit:
       Edit Channel: "チャンネルを編集"
       Edit Channel Name: "チャンネル名を編集"
+      Cancel: "キャンセル"
     show:
       Send: "送る"
       Remove: "削除する"
       Edit: "編集する"
       Reply: "応答"
       View: "見る"
+
     _navbar:
       Setting: "設定"
       Edit: "編集する" 

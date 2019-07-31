@@ -1,24 +1,32 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+$ git config --global user.name "MyoHtet"
 
-* Ruby version
+$ git config --global user.email myohtet@mm.cybermissions.co.jp
 
-* System dependencies
+$ git init
 
-* Configuration
+$ git add 
 
-* Database creation
+$ git status
 
-* Database initialization
+$ git commit -m "Initialize repository"
 
-* How to run the test suite
+$ git push -u origin master
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+Heroku deploy
+
+$ heroku --version
+
+$ heroku login
+
+$ heroku apps:create "team3chatapp"
+
+$ heroku git:remote a "team3chatapp"
+
+$ git push heroku master
+
+$ heroku run rails db:migrate

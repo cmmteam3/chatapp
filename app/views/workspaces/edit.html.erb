@@ -9,28 +9,28 @@
     <ul class="list-group">
       <li class="list-group-item">
         <div class="dropdown">
-          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn dropdown-toggle text-info font-weight-bold" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%=@workspace.name %>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-           <p><%= link_to t('workspaces.edit.Edit'), edit_workspace_path(@workspace), method: 'get'%></p>
-           <p> <a class="dropdown-item" href="#"><%= link_to t('workspaces.edit.Remove'), workspace_path(@workspace), method: 'delete', data: { confirm: 'Are you sure?' } %></a></p>
-           <a class="dropdown-item" href="#"><%= t('workspaces.edit.Switch to other Workspace') %></a>
+           <p><%= link_to t('workspaces.edit.Edit'), edit_workspace_path(@workspace), method: 'get', class:'text-info'%></p>
+           <p> <a class="dropdown-item" href="#"><%= link_to t('workspaces.edit.Remove'), workspace_path(@workspace), method: 'delete', data: { confirm: 'Are you sure?' }, class:'text-info' %></a></p>
+          <!--  <a class="dropdown-item" href="#"><%= t('workspaces.edit.Switch to other Workspace') %></a> -->
          </div>
        </div></li>
-       <li class="list-group-item d-flex justify-content-between align-items-center">
+       <li class="list-group-item d-flex justify-content-between align-items-center text-info font-weight-bold">
        <%= t('workspaces.edit.Add New Channel') %>
         <span class="badge  badge-pill">
          <%= link_to " #", new_channel_path(:id =>@workspace.id) %></span>
        </li>
        <% if @channels %>
        <% @channels.each do |channel| %>
-       <li class="list-group-item">#<%= link_to channel.name, channel_path(channel)  %></li>
+       <li class="list-group-item">#<%= link_to channel.name, channel_path(channel), class:'font-weight-bold text-info'  %></li>
        <% end %>
 
        <% else %>
        <% end %>     
-       <li class="list-group-item"> <%= link_to t('workspaces.edit.Invite member'), workspace_users_workspace_index_path(@workspace) %></li>
+       <li class="list-group-item"> <%= link_to t('workspaces.edit.Invite member'), workspace_users_workspace_index_path(@workspace), class:'font-weight-bold text-info' %></li>
      </li> 
    </ul>
  </div>
@@ -43,16 +43,16 @@
       </h5>
       <div class="card-body">
        <%= form_for  @workspace do |f| %>
-       <%= form_group_for f, :name, label: false  do %>
+       <%= form_group_for f, :name, label: false do %>
        <%= f.label :name, class: 'text-info text-uppercase' %>
        <div class="Input-group">    
         <%= f.text_field :name, class: 'form-control', placeholder: t('workspaces.edit.Edit Workspace Name') %>
       </div>
       <% end %> 
-      <div class="form-group"> <%= f.submit class: 'btn btn-info' %>
+      <center><div class="form-group"> <%= f.submit class: 'btn btn-info' %>
         <%= link_to t('workspaces.edit.Cancel'), workspace_path, class: "btn btn-info" %>
         <% end %>
-      </div>
+      </div></center>
     </div>
   </div>
 </div>

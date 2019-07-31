@@ -1,19 +1,34 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-info justify-content-between">
   <a class="navbar-brand text-white font-weight-bold" href="#"><%= t("channels._navbar.Team3 chat Application") %></a>
   <div class="dropdown show">
-    <div class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   <%= link_to "<i class='fa fa-star stars'></i>".html_safe, star_path,style:"margin-right: 10px;" %>
+    <div class="btn" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="glyphicon glyphicon-envelope"><i class="fa fa-cog"></i></span></div>
       <div class="dropdown-menu text-info" aria-labelledby="dropdownMenuLink">
-        <p style="margin-left: 29px"><%= link_to t('channels._navbar.Edit'), edit_channel_path(@channel), method: 'get' %></a></p>
-        <p style="margin-left: 29px"> <%= link_to t('channels._navbar.Remove'),channel_path(@channel), method: 'delete', data: { confirm: 'Are you sure?' } %></a></p>
-        <p style="margin-left: 29px"><%= link_to t('channels._navbar.Invite'), channel_channels_user_index_path(@channel) %></p>      
+        <% if  @channelsuser %>
+            <%  @channelsuser.each do|channelsuser| %>
+                <% if channelsuser.role=='owner' && channelsuser.channel_id==@channel.id %>
+        <p style="margin-left: 29px"><%= link_to t('channels._navbar.Edit'), edit_channel_path(@channel), method: 'get',class:'text-info font-weight-bold' %></a></p>
+        <p style="margin-left: 29px"> <%= link_to t('channels._navbar.Remove'),channel_path(@channel), method: 'delete', data: { confirm: 'Are you sure?' },class:'text-info font-weight-bold' %></a></p>
+         <% else %> 
+          <% end %>
+          <% end %>
+          <% else %>
+          <% end %>
+        <p style="margin-left: 29px"><%= link_to t('channels._navbar.Invite'), channel_channels_user_index_path(@channel),class:'text-info font-weight-bold' %></p>      
       </div>
     <% if current_user %>
-    <%= current_user.name %>
-     <%= link_to "<i class='fa fa-star stars'></i>".html_safe, star_path,style:"margin-right: 10px;" %>
-    <%= link_to t('layouts._navbar.Logout'), logout_path, style:"margin-right: 110px;color:white;" %>
+   <b style="color: white" ><%= current_user.name %>  |</b>  
+    <%= link_to t('layouts._navbar.Logout'), logout_path, style:"color:white;" %> <b style="color:white"> | </b>
     <% else %> 
     <%= link_to t('layouts._navbar.Sign In'), login_path %> <%= link_to t('layouts._navbar.Sign Up'), new_signup_path %>
     <% end %>  
+    
+    <% if I18n.locale == I18n.default_locale %>
+     <%= link_to t('layouts._navbar.Japan'),{:locale => 'ja'}, style:"color:white;margin-right:110px;" %> 
+     <% else %>
+     <%= link_to t('layouts._navbar.English'),{:locale => 'en'}, style:"color:white;" %> 
+     <% end %>
+
      </div>
 </nav>

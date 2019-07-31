@@ -1,72 +1,48 @@
   <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <title>Chap Application</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chap Application</title>
   <div class="wrapper hold-transition skin-blue layout-top-nav">
     <header class="main-header  ">
       <nav class="navbar navbar-static-top">
         <div class="container">
           <div class="navbar-header">
-            <a href="" class="navbar-brand"><b>Chat App</b></a>
+            <a href="" class="navbar-brand"><b>Chat Apbp</b></a>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
               <i class="fa fa-bars"></i>
             </button>
-          </div>
-      
-         
+          </div>        
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-             
-
-             
-             
-               <ul class="nav navbar-nav">
-             
+             <ul class="nav navbar-nav">
               <li class="dropdown">
-                 
-                  <li>
-                   
-               
+                <li>
                 </li>
-              
               </li>
-            </ul>
-             
-              
-            
-            </ul>
-          </div>
-        
-        </div>
-      
-      </nav>
-    </header>
+            </ul>           
+          </ul>
+        </div>       
+      </div>      
+    </nav>
+  </header>
   <body>
-  <table>
-    	
-
-   
-  <% @channels.each do |channel| %>
-    <% tmp = 0 %>
-    <% @cu.each do |cu|%>
-        <% if cu.user_id == current_user.id and cu.channel_id == channel.id %>
-            <% tmp = 1%>
-        <% end %>
-    <% end %>
-    <% if channel.privacy == true %>
-      <li class="list-group-item">#<%= link_to channel.name, channel_path(channel) %></li>
-    <% else %>
-      <% if tmp == 1 %>
-        <li class="list-group-item">#<%= link_to channel.name, channel_path(channel) %></li>
-      <% else %>
-
+    <table>
+      <% @channels.each do |channel| %>
+      <% tmp = 0 %>
+      <% @cu.each do |cu|%>
+      <% if cu.user_id == current_user.id and cu.channel_id == channel.id %>
+      <% tmp = 1%>
       <% end %>
-    <% end %>
-    
-  <% end %>
-
-
-  </table>
-
-    </body>
+      <% end %>
+      <% if channel.privacy == true %>
+      <li class="list-group-item">#<%= link_to channel.name, channel_path(channel) %></li>
+      <% else %>
+      <% if tmp == 1 %>
+      <li class="list-group-item">#<%= link_to channel.name, channel_path(channel) %></li>
+      <% else %>
+      <% end %>
+      <% end %>
+      <% end %>
+    </table>
+  </body>
   </div>
   </html>

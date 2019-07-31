@@ -19,6 +19,7 @@
 	        
 		end
 		def destroy
+			@cu = ChannelsUser.all
 			Message.find(params[:id]).destroy
 			 flash[:notice] = t(:"Message destroy successful")
 		   @channel=Channel.find(   session[:channels_list])
@@ -26,7 +27,7 @@
 
 		end
 		def edit
-			
+			@cu = ChannelsUser.all
 			 @messages = Message.find(params[:id])
 			   @workspace=Workspace.find_by_id(session[:current_workspace])
            @channels=Channel.where(:workspace_id => @workspace.id)
@@ -35,6 +36,7 @@
            @channelsuser=User.all.find_by(id: current_user).channels_user
 		end
 		def update
+			   @cu = ChannelsUser.all
 			   @message= Message.find(params[:id])
 	            @message.update(name:params[:name])
 	            @message.save
@@ -60,12 +62,18 @@
            redirect_back(fallback_location: root_path)
         end
      def StarShow
+     	   
      	  @starMessage=Message.all.where(favourite:1,:user =>current_user)
-     	  @workspace=Workspace.find_by_id(session[:current_workspace])
+     	  if @starMessage.empty?
+                 redirect_back(fallback_location: channels_path)
+                 flash[:notice] = t(:"No Star List Message")
+          else
+     	   @workspace=Workspace.find_by_id(session[:current_workspace])
            @channels=Channel.where(:workspace_id => @workspace.id)
            @usersworkspace=UsersWorkspace.all
-            @cu = ChannelsUser.all
+           @cu = ChannelsUser.all
            @channelsuser=User.all.find_by(id: current_user).channels_user
+          end
      end
 
 	 private 

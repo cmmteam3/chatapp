@@ -8,13 +8,13 @@
      @channels=Channel.where(:workspace_id => @workspace.id)
      @message = Message.new
      @cu = ChannelsUser.all
-     #@usersworkspace=UsersWorkspace.all
+    @works = User.all.find_by(id: current_user).users_workspace
         end
     def index
           @cu = ChannelsUser.all
           @channels = Channel.all
           @channelsuser = User.all.find_by(id: current_user).channels_user
-    
+          @works = User.all.find_by(id: current_user).users_workspace
     end
     
     def create
@@ -41,11 +41,14 @@
              @channels=Channel.where(:workspace_id => @workspace.id)
              @usersworkspace=UsersWorkspace.all
             @channelsuser=User.all.find_by(id: current_user).channels_user
+             @works = User.all.find_by(id: current_user).users_workspace
               
             end
 
             def update
               @channel = Channel.find(params[:id])
+              @cu = ChannelsUser.all
+               @works = User.all.find_by(id: current_user).users_workspace
               if @channel.update(channel_params)
               
               @workspace=Workspace.find(session[:current_workspace])
@@ -58,6 +61,7 @@
             end
 
             def show
+               @works = User.all.find_by(id: current_user).users_workspace
              @channel= Channel.find(params[:id])
              @usersworkspace=UsersWorkspace.all
              @message=Message.new
@@ -73,6 +77,7 @@
            end
 
            def destroy
+             @works = User.all.find_by(id: current_user).users_workspace
              Channel.find(params[:id]).destroy
                @cu = ChannelsUser.all
              @workspace=Workspace.find(session[:current_workspace])

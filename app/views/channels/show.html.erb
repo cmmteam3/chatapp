@@ -67,7 +67,7 @@
             <li class="list-group-item list-group-item-info">        
              <%= thread.text %>
              <i class="float-lg-right">
-               <%= link_to t('channels.show.Remove'), thread_reply_path(thread), method:'delete', data:{confirm:'Are you sure?'} %> .
+               <%= link_to t('channels.show.Remove'), thread_reply_path(thread), method:'delete', data:{confirm:'Are you sure?'} %>
              </i>
            </li>
          </ul>
@@ -94,7 +94,7 @@
   </div>
   <div class="form-group">
    <%= f.submit t('channels.show.Send'), class: 'btn btn-primary btn-sm' %>
- </div>
+  </div>
  <% end %>
 </div>
 </div>

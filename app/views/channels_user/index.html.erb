@@ -7,47 +7,48 @@
     <%= render 'layouts/navbar' %>
 
     <div class="sidenav">
-   
-         <%= render 'layouts/sidebar' %>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 offset-sm-3">
-           <table class="table table-dark">
-  <thead>
-    <tr>
-      
-      <th scope="col"><%= t("channels_user.index.Name") %></th>
-      <th scope="col"><%= t("channels_user.index.Email") %></th>
-      <th scope="col"><%= t("channels_user.index.Invite User") %></th>
-    </tr>
-  </thead>
-  <tbody>
-   
-   <% @usersworkspace.each do |usersworkspace| %>
-                    <tr>
-                     <% if usersworkspace.role=='member'  %> 
-                          <td><%= usersworkspace.user.name %></td>
-            <td><%= usersworkspace.user.email %></td>
-          
-                  <td>
-                       
-                       <%= link_to t('channels_user.index.Invite'), channel_channels_user_path(params[:channel_id],:id=>usersworkspace.user_id), method: :put, class: "btn btn-primary btn-sm", id: usersworkspace.user_id %>
-                   
-                        <%= link_to t('channels_user.index.Uninvite'), channel_channels_user_path(params[:channel_id],usersworkspace.user_id), method: :put, class: "btn btn-primary btn-sm", id: usersworkspace.user_id %>
+
+     <%= render 'layouts/sidebar' %>
+   </div>
+
+   <div class="row" style="margin-top:50px;margin-left: 200px;">
+    <div class="col-sm-6 offset-sm-3">
+     <table class="table table-dark">
+      <thead>
+        <tr>
+
+          <th scope="col"><%= t("channels_user.index.Name") %></th>
+          <th scope="col"><%= t("channels_user.index.Email") %></th>
+          <th scope="col"><%= t("channels_user.index.Invite User") %></th>
+        </tr>
+      </thead>
+      <tbody>
+
+       <% @usersworkspace.each do |usersworkspace| %>
+       <tr>
+         <% if usersworkspace.role=='member' && usersworkspace.workspace_id==@workspace.id  %> 
+         <td><%= usersworkspace.user.name %></td>
+         <td><%= usersworkspace.user.email %></td>
+
+         <td>
+
+           <%= link_to t('channels_user.index.Invite'), channel_channels_user_path(params[:channel_id],:id=>usersworkspace.user_id), method: :put, class: "btn btn-primary btn-sm", id: usersworkspace.user_id %>
 
 
-                       </td>
-</tr>
 
 
-                        <% else %>
-                        <% end %>
-                       
-                <% end %>
-  </tbody>
-</table>
-    </div>
+         </td>
+       </tr>
+
+
+       <% else %>
+       <% end %>
+
+       <% end %>
+     </tbody>
+   </table>
+ </div>
 </div>
 </div>
-  </body>
-  </html> 
+</body>
+</html> 

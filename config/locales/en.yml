@@ -41,7 +41,7 @@ en:
   Create Workspace Successfully: "Create Workspace Successfully"
   Create Workspaace fail: "Create Workspaace fail"
   Update successful: "Update successful"
-  Update fail: "Update fail"
+  # Update fail: "Update fail"
   Wokspace destroy successful: "Wokspace destroy successful"
   User SignUp Successful: "User SignUp Successful"
   Signup Not Successfull: "Signup Not Successfull"
@@ -60,7 +60,7 @@ en:
   password: "password"
   User SignUp Successfully: "User SignUp Successfully"
   Unknown user: "Unknown user"
-
+  No Star List Message: "No Star List Message"
   signup:
     new:
       Save: "Save"
@@ -133,12 +133,14 @@ en:
     edit:
       Edit Channel: "Edit Channel"
       Edit Channel Name: "Edit Channel Name"
+      Cancel: "Cancel"
     show:
       Send: "Send"
       Remove: "Remove"
       Edit: "Edit"
       Reply: "Reply"
       View: "View"
+
     _navbar:
       Setting: "Setting"
       Edit: "Edit"
@@ -173,7 +175,7 @@ en:
         password: "password"
         password_confirmation: "password_confirmation"
       session:
-          email: "Email"
+        email: "Email"
       workspace:
         name: "name"
       channel:

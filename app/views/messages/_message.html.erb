@@ -1,19 +1,14 @@
 <div style="margin-left: 300px;">
-		  <%=message.user.name %>
+  <%=message.user.name %>
   <div class="alert alert-primary" role="alert">
-       <%=message.name %>
-        <%=message.created_at %> 
-           
-         <% if message.favourite == true %>
-          <i onclick="gofavourite(this)" star_id="<%= message.id %>" class="fa fa-star stars" style="position: absolute;left:90%;z-index: 999;color:yellow;"></i>
-          <% else %>
-          <i onclick="gofavourite(this)" star_id="<%= message.id %>" class="fa fa-star stars" style="position: absolute;left:90%;z-index: 999;"></i>
-          <% end %>  
-           <a style="margin-left: 500px;"><%= link_to 'Remove', message_path(message), method: 'delete', data: { confirm: 'Are you sure?' } %></a>
-
-          </div>
-        
-   
-          
+   <%=message.name %>
+   <%=message.created_at %> 
+   <% if message.favourite == true %>
+   <i onclick="gofavourite(this)" star_id="<%= message.id %>" class="fa fa-star stars" style="position: absolute;left:90%;z-index: 999;color:yellow;"></i>
+   <% else %>
+   <i onclick="gofavourite(this)" star_id="<%= message.id %>" class="fa fa-star stars" style="position: absolute;left:90%;z-index: 999;"></i>
+   <% end %>  
+   <a style="margin-left: 500px;"><%= link_to 'Remove', message_path(message), method: 'delete', data: { confirm: 'Are you sure?' } %></a>
  </div>
-      
+</div>
+
