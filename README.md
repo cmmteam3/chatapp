@@ -23,9 +23,9 @@ $ heroku --version
 
 $ heroku login
 
-$ heroku apps:create "team3chatapp"
+$ heroku apps:create team3chatapp
 
-$ heroku git:remote a "team3chatapp"
+$ heroku git:remote a team3chatapp
 
 $ git push heroku master
 
