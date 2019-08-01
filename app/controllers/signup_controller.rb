@@ -15,6 +15,9 @@ class SignupController < ApplicationController
      render 'signup/index'
       end
     end
+    def manage
+      @user=User.all
+    end
       private 
       def users_params
       	params.require(:user).permit(:name,:email,:password,:password_confirmation)

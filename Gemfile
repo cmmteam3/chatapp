@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 
  gem 'rails-i18n'
  gem 'kaminari'
- #gem 'pg' 
+ gem 'pg' 
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

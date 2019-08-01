@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/star', to:'messages#StarShow'
   get "/star",to:"messages#ssss"
   post "/star",to:"messages#star"
+  get "/user", to:"signup#manage"
 
 
    resources :channels do

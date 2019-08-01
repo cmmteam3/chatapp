@@ -1,14 +1,8 @@
 	class ApplicationController < ActionController::Base
 	rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 	 before_action :set_locale
-	 helper_method :current_user
-	  def current_user
-	    if session[:user_id]
-	      @current_user ||= User.find(session[:user_id])
-	    else
-	      @current_user = nil
-	    end
-	  end
+	 protect_from_forgery with: :exception
+     include SessionHelper
 
 
 
@@ -25,4 +19,16 @@
   def record_not_found
     render text: "404 Not Found", status: 404
   end
+
+
+  def root
+    # Homepage
+  end
+
+  protected
+
+  def require_login
+    redirect_to login_path and return unless logged_in?
+  end
+
 	end

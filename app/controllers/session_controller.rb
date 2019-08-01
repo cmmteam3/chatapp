@@ -12,7 +12,7 @@
    user = User.find_by(email: params[:session][:email])
     if user.present?
     if user && user.authenticate(params[:session][:password])
-         session[:user_id] = user.id
+       log_in user
         redirect_to :controller => 'workspaces', :action => 'index' 
       else
         redirect t(:'Incorrect email/password combo')
