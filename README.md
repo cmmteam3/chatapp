@@ -30,3 +30,5 @@ $ heroku git:remote -a team3chatapplication
 $ git push heroku master
 
 $ heroku run rails db:migrate
+
+$ heroku run rails db:seed
