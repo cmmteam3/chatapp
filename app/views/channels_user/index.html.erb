@@ -26,7 +26,7 @@
 
        <% @usersworkspace.each do |usersworkspace| %>
        <tr>
-         <% if usersworkspace.role=='member' && usersworkspace.workspace_id==@workspace.id  %> 
+         <% if usersworkspace.workspace_id==@workspace.id  %> 
          <td><%= usersworkspace.user.name %></td>
          <td><%= usersworkspace.user.email %></td>
           <% @cu.each do |u| %>
@@ -34,7 +34,7 @@
            <td> 
               <%= link_to "Uninvite", channel_channels_user_path(params[:channel_id],usersworkspace.user_id), method: :put, class: "btn btn-primary btn-sm", id: usersworkspace.user_id %>
                       </td>
-          <% elsif u.role== "" %>
+          <% elsif u.role== "owner" %>
            <td>
 
            <%= link_to t('channels_user.index.Invite'), channel_channels_user_path(params[:channel_id],:id=>usersworkspace.user_id), method: :put, class: "btn btn-primary btn-sm", id: usersworkspace.user_id %>
