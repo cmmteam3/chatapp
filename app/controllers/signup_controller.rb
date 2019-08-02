@@ -1,7 +1,8 @@
 class SignupController < ApplicationController
   def index
-      @user=User.new
+    @user=User.new
   end
+
      def new
      	@user=User.new
       end
@@ -22,4 +23,7 @@ class SignupController < ApplicationController
       def users_params
       	params.require(:user).permit(:name,:email,:password,:password_confirmation)
       end
+
+ 
+
 end

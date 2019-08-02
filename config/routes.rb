@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   get '/star', to:'messages#StarShow'
   get "/star",to:"messages#ssss"
   post "/star",to:"messages#star"
+
   get "/user", to:"signup#manage"
+
+  
 
 
    resources :channels do
@@ -24,7 +27,7 @@ Rails.application.routes.draw do
 resources :generals
 resources :thread_replies
 resources :messages
-
+resources :user_management
 resources :workspaces do 
   resources :users_workspace
 
