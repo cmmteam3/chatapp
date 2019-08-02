@@ -11,7 +11,7 @@ gem 'popper_js', '~> 1.14.5'
 # Use mysql as the database for Active Record
 
  
-# gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+#gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
@@ -59,9 +59,9 @@ group :development do
   # gem 'spring'
   # gem 'spring-watcher-listen', '~> 2.0.0'
 end
- group :production do
-  gem 'pg'
- end
+group :production do
+ gem 'pg'
+end
 # group :test do
 #   # Adds support for Capybara system testing and selenium driver
 #   gem 'capybara', '>= 2.15'

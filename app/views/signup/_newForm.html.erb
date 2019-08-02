@@ -2,7 +2,7 @@
  <div class=" card-header">
   <h4 class="text-center text-info"><%= t('signup.new.signup') %> </h4>
 </div>
-<div class="card-body">
+<div class="card-body text-danger">
  <%= form_for  @user, url: {action: "create"} do |f| %>
 
  <i class="fa fa-user text-info text-uppercase">  <%= f.label :name %></i>

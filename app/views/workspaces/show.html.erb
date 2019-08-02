@@ -42,6 +42,7 @@
            <% if usersworkspace.role=='owner' && usersworkspace.workspace_id==@workspace.id %>
            <p style="margin-left: 29px"><%= link_to t('workspaces._form.Edit'), edit_workspace_path(@workspace), method: 'get',class:'text-info'%></p>
            <p style="margin-left: 29px"> <a class="dropdown-item" href="#"><%= link_to t('workspaces._form.Remove'), workspace_path(@workspace), method: 'delete', data: { confirm: 'Are you sure?' }, class:'text-info' %></a></p>
+           <p style="margin-left: 5px"> <a class="dropdown-item" href="#"><%= link_to t('workspaces.show.Switch To New Workspce'), workspaces_path, class:'text-info' %></a></p>
            <!--            <a class="dropdown-item" href="#"></a> -->
            <% else %>
            <% end %>
@@ -53,7 +54,7 @@
        <li class="list-group-item d-flex justify-content-between align-items-center text-info font-weight-bold">
         <%= t('workspaces._form.Add New Channel') %>
         <span class="badge  badge-pill">
-         <%= link_to " #", new_channel_path(:id =>@workspace.id) %></span>
+        <%= link_to " #", new_channel_path(:id =>@workspace.id) %></span>
        </li>
        <% if @channels %>
        <% @channels.each do |channel| %>
@@ -74,10 +75,7 @@
        <% end %>
        <% else %>
        <% end %>
-       <li class="list-group-item"><%= link_to t("workspaces.show.Invite"), workspace_users_workspace_index_path(@workspace), class:'font-weight-bold text-info' %></li> 
-
-
-
+       <li class="list-group-item"><%= link_to t("workspaces.show.Invite"), workspace_users_workspace_index_path(@workspace), class:'font-weight-bold text-info' %></li>
        <!-- <li> <%= link_to "User Management", user_path %> -->
      </ul>
    </div>  

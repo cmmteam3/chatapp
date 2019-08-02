@@ -52,6 +52,7 @@ ja:
       Create workspace: "ワークスペースを作成する"
     show:
       Invite: "招待する"
+      Switch To New Workspce: "新しいワークスペースに切り替える"
     new:
       Create New Workspace: "新しいワークスペースを作成する"
       Save: "保存する"
@@ -69,7 +70,7 @@ ja:
       Edit: "編集する"
       Remove: "削除する"
       delete: "削除する"
-      Switch to other Workspace: "他のワークスペースに切り替える"
+      Switch To New Workspce: "新しいワークスペースに切り替える"
       Add New Channel: "新しいチャンネルを追加"
       Cancel: "キャンセル"
   users_workspace: 
@@ -123,6 +124,7 @@ ja:
     _sidebar:
       Invite: "招待する"
       Rails chat Application: "レールチャットアプリケーション"
+      Switch To New Workspce: "新しいワークスペースに切り替える"
   messages:
     edit:    
       Edit Message: "メッセージを編集"

@@ -4,13 +4,13 @@
        @usersworkspace=UsersWorkspace.all
        @workspace=Workspace.find_by_id(session[:current_workspace])
        @channels=Channel.where(:workspace_id => @workspace.id)
-       @usersworkspace=UsersWorkspace.all
+       @usersworkspace=UsersWorkspace.where.not(user_id: current_user.id)
        @cu = ChannelsUser.all
        @works = User.all.find_by(id: current_user).users_workspace
-       @channelsuser=User.all.find_by(id: current_user).channels_user
+       #@channelsuser=User.all.find_by(id: current_user).channels_user
      end
-     def update
 
+     def update
        @invite_user = UsersWorkspace.find(params[:id])
        @invite_channel = Channel.find(params[:channel_id])
        @is_invite =ChannelsUser.find_by(user: @invite_user, channel: @invite_channel, role: "member")

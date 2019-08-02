@@ -12,7 +12,7 @@
             <div class="card card-header text-center text-info">
              <%= t('workspaces.new.Create New Workspace') %>
            </div>
-           <div class="card card-body">
+           <div class="card card-body text-danger">
              <%= form_for @workspace, url: {action: "create"} do |f| %>
              <%= f.label :name, class: 'text-info text-uppercase'  %>
              <%= form_group_for f, :name, label: false  do %>

@@ -3,7 +3,18 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body>    
+    <style>
+    .side-link:link{
+      color: white;
+    }
+    .side-link:visited{
+      color: blue;
+    }
+    .side-link:hover{
+      color: black;
+    }
+  </style>
     <%= render 'layouts/navbar' %>
 
     <div class="sidenav">
@@ -29,31 +40,19 @@
          <% if usersworkspace.workspace_id==@workspace.id  %> 
          <td><%= usersworkspace.user.name %></td>
          <td><%= usersworkspace.user.email %></td>
-          <% @cu.each do |u| %>
-          <% if u.role=='member' %>
-           <td> 
-              <%= link_to "Uninvite", channel_channels_user_path(params[:channel_id],usersworkspace.user_id), method: :put, class: "btn btn-primary btn-sm", id: usersworkspace.user_id %>
-                      </td>
-          <% elsif u.role== "owner" %>
-           <td>
-
-           <%= link_to t('channels_user.index.Invite'), channel_channels_user_path(params[:channel_id],:id=>usersworkspace.user_id), method: :put, class: "btn btn-primary btn-sm", id: usersworkspace.user_id %>
-         </td>
-           
-         
-          <% end %>
-            
-           <% end %>
-       </tr>
 
 
-       <% else %>
-       <% end %>
+         <td> 
+          <%= link_to t("channels_user.index.Invite"), channel_channels_user_path(params[:channel_id],usersworkspace.user_id), method: :put, class: "btn btn-primary btn-sm",:class=>"side-link", id: usersworkspace.user_id %>
+        </td>
+        <% else %>
+        <% end %>
+      </tr>
 
-       <% end %>
-     </tbody>
-   </table>
- </div>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 </div>
 </div>
 

@@ -90,6 +90,7 @@ en:
       Create workspace: "Create workspace"
     show:
       Invite: "Invite"
+      Switch To New Workspce: "Switch To New Workspce"
     new:
       Create New Workspace: "Create New Workspace"
       Save: "Save"
@@ -107,7 +108,7 @@ en:
       Edit: "Edit"
       Remove: "Remove"
       delete: "delete"
-      Switch to other Workspace: "Switch to other Workspace"
+      Switch To New Workspce: "Switch To New Workspce"
       Add New Channel: "Add New Channel"
       Cancel: "Cancel"
   users_workspace: 
@@ -158,6 +159,7 @@ en:
       Team3ChatApplication: "Team3 Chat Application"
     _sidebar:
       Invite: "Invite"
+      Switch To New Workspce: "Switch To New Workspce"
   messages:
     edit:    
       Edit Message: "Edit Message"

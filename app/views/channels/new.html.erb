@@ -16,12 +16,15 @@
         <h5 class="card-header info-color white-text text-center text-info">
           <strong><%= t('channels.new.Add New Channel') %></strong>
         </h5>
-        <div class="card-body">
+        
+
+        <div class="card-body text-danger">
           <%= form_for(@channel) do |f| %> 
-          <div class="form-group has-feedback text-info text-uppercase">
-            <%= f.label :name %>
+            <%= f.label :name,class: 'text-info text-uppercase' %>
+            <%= form_group_for f, :name, label: false  do %>
+            <div class="Input-group"> 
             <%= f.text_field :name, class: 'form-control' ,name:"name",placeholder: t('channels.new.Enter Channel Name') %>
-          </div>
+            </div> <% end %>
           <div>
            <%= f.hidden_field :workspace_id, value: @workspace.id ,name:"workspace_id" %>
          </div>

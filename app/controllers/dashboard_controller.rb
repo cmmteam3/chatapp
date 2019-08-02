@@ -1,16 +1,19 @@
   class DashboardController < ApplicationController
-    def new
-    end
-  def show
-      
-    end
+
+  def new
+  end
+
+  def show    
+  end
 
   def index
   	@work= Workspace.all
   end
+
   def edit
      @workspace = Workspace.find(params[:id])
   end
+
   def update
       if @workspace.update_attributes(workspace_params)
         flash[:success] = "Profile updated"
@@ -18,10 +21,11 @@
       else
         render 'edit'
       end
-    end
-      private
+  end
 
-      def workspace_params
+  private
+
+    def workspace_params
         params.require(:workspace).permit(:workspace_name,:about)
-      end
+    end
   end

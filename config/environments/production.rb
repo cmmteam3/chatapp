@@ -8,7 +8,7 @@ Rails.application.configure do
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
-    host = 'teamchatapp.herokuapp.com'
+  host = 'teamchatapp.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
   # ActionMailer::Base.smtp_settings = {
   #   :address        => 'smtp.sendgrid.net',

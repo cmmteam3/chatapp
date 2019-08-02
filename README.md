@@ -7,7 +7,7 @@ $ git config --global user.email myohtet@mm.cybermissions.co.jp
 
 $ git init
 
-$ git add 
+$ git add . 
 
 $ git status
 

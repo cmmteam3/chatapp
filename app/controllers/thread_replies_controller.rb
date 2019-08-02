@@ -1,7 +1,7 @@
 	class ThreadRepliesController < ApplicationController
+
 		def show
 		end
-
 
 		def create
 			@thread=ThreadReply.new(text:params[:text],channel_id:params[:channel_id],message_id:params[:message_id],user_id:current_user.id)
@@ -15,8 +15,7 @@
 			ThreadReply.find(params[:id]).destroy
 			flash[:notice] =t(:"Thread destroy successful")
 			@channel=Channel.find(session[:channels_list])
-			redirect_to channel_path(@channel)
-			
+			redirect_to channel_path(@channel)			
 		end
 
 		def edit
